@@ -1,0 +1,80 @@
+enum Transaction {
+	VENDRE,
+    LOCATION
+}
+
+enum PeriodeDePaiement{
+	JOUR,
+    SEMAINE,
+    MOIS,
+    ANNEE
+}
+
+enum Etat {
+	NEUF,
+    OCCASION
+}
+
+enum ModeDePaiement{
+	COMPTANT,
+    MORATOIRE
+}
+
+
+enum Papier{
+	TITRE_FONCIER,
+    BAIL,
+    DELIBERATION
+}
+
+enum TypeDeBien {
+    TERRAIN, 
+    MAISON, 
+    APPARTEMENT, 
+    CHAMBRE, 
+    BUREAU, 
+    LOCAL_DE_COMMERCE, 
+    VERGER, 
+    HANGAR
+}
+entity Recherche {}
+entity Contact {}
+entity Apropos {}
+entity Propriete {
+	reference String unique,
+	type TypeDeBien,
+	modeDeTransaction Transaction,
+    etat Etat,
+    description TextBlob,
+    prix Long,
+    adresse String,
+    adresseTronque String maxlength(80),
+    latitude Long,
+    longitude Long,
+    superficie Long,
+    anneeDeConstruction Integer min(1900),
+    nombreDePieces Integer,
+    nombreDeDouches Integer,
+    nombreDeGarages Integer,
+    modeDePaiement ModeDePaiement,
+    papier Papier,
+    acceEelectricite Boolean,
+    accesEau Boolean,
+    accesADSL Boolean,
+    meuble Boolean,
+    enPromo LocalDate,
+    periode PeriodeDePaiement,
+    distancePrimaire Double,
+    distanceSecondaire Double,
+    distanceLycee Double,
+    distancehopital Double,
+    distanceclinique Double,
+    urlPhotoPrincipale String,
+    urlPhoto1 String,
+    urlPhoto2 String,
+    urlPhoto3 String,
+    urlPhoto4 String,
+    urlPhoto5 String,
+    urlPhoto6 String,
+    urlVideo String,
+}

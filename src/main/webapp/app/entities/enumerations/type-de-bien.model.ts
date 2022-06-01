@@ -1,0 +1,17 @@
+export enum TypeDeBien {
+  TERRAIN = 'TERRAIN',
+
+  MAISON = 'MAISON',
+
+  APPARTEMENT = 'APPARTEMENT',
+
+  CHAMBRE = 'CHAMBRE',
+
+  BUREAU = 'BUREAU',
+
+  LOCAL_DE_COMMERCE = 'LOCAL_DE_COMMERCE',
+
+  VERGER = 'VERGER',
+
+  HANGAR = 'HANGAR',
+}

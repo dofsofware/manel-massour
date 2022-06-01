@@ -1,0 +1,172 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="propriete">
+      <h2 data-cy="proprieteDetailsHeading"><span jhiTranslate="buntuApp.propriete.detail.title">Propriete</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ propriete.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="buntuApp.propriete.reference">Reference</span></dt>
+        <dd>
+          <span>{{ propriete.reference }}</span>
+        </dd>
+        <dt><span jhiTranslate="buntuApp.propriete.type">Type</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'buntuApp.TypeDeBien.' + propriete.type }}">{{ propriete.type }}</span>
+        </dd>
+        <dt><span jhiTranslate="buntuApp.propriete.modeDeTransaction">Mode De Transaction</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'buntuApp.Transaction.' + propriete.modeDeTransaction }}">{{ propriete.modeDeTransaction }}</span>
+        </dd>
+        <dt><span jhiTranslate="buntuApp.propriete.etat">Etat</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'buntuApp.Etat.' + propriete.etat }}">{{ propriete.etat }}</span>
+        </dd>
+        <dt><span jhiTranslate="buntuApp.propriete.description">Description</span></dt>
+        <dd>
+          <span>{{ propriete.description }}</span>
+        </dd>
+        <dt><span jhiTranslate="buntuApp.propriete.prix">Prix</span></dt>
+        <dd>
+          <span>{{ propriete.prix }}</span>
+        </dd>
+        <dt><span jhiTranslate="buntuApp.propriete.adresse">Adresse</span></dt>
+        <dd>
+          <span>{{ propriete.adresse }}</span>
+        </dd>
+        <dt><span jhiTranslate="buntuApp.propriete.adresseTronque">Adresse Tronque</span></dt>
+        <dd>
+          <span>{{ propriete.adresseTronque }}</span>
+        </dd>
+        <dt><span jhiTranslate="buntuApp.propriete.latitude">Latitude</span></dt>
+        <dd>
+          <span>{{ propriete.latitude }}</span>
+        </dd>
+        <dt><span jhiTranslate="buntuApp.propriete.longitude">Longitude</span></dt>
+        <dd>
+          <span>{{ propriete.longitude }}</span>
+        </dd>
+        <dt><span jhiTranslate="buntuApp.propriete.superficie">Superficie</span></dt>
+        <dd>
+          <span>{{ propriete.superficie }}</span>
+        </dd>
+        <dt><span jhiTranslate="buntuApp.propriete.anneeDeConstruction">Annee De Construction</span></dt>
+        <dd>
+          <span>{{ propriete.anneeDeConstruction }}</span>
+        </dd>
+        <dt><span jhiTranslate="buntuApp.propriete.nombreDePieces">Nombre De Pieces</span></dt>
+        <dd>
+          <span>{{ propriete.nombreDePieces }}</span>
+        </dd>
+        <dt><span jhiTranslate="buntuApp.propriete.nombreDeDouches">Nombre De Douches</span></dt>
+        <dd>
+          <span>{{ propriete.nombreDeDouches }}</span>
+        </dd>
+        <dt><span jhiTranslate="buntuApp.propriete.nombreDeGarages">Nombre De Garages</span></dt>
+        <dd>
+          <span>{{ propriete.nombreDeGarages }}</span>
+        </dd>
+        <dt><span jhiTranslate="buntuApp.propriete.modeDePaiement">Mode De Paiement</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'buntuApp.ModeDePaiement.' + propriete.modeDePaiement }}">{{ propriete.modeDePaiement }}</span>
+        </dd>
+        <dt><span jhiTranslate="buntuApp.propriete.papier">Papier</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'buntuApp.Papier.' + propriete.papier }}">{{ propriete.papier }}</span>
+        </dd>
+        <dt><span jhiTranslate="buntuApp.propriete.acceEelectricite">Acce Eelectricite</span></dt>
+        <dd>
+          <span>{{ propriete.acceEelectricite }}</span>
+        </dd>
+        <dt><span jhiTranslate="buntuApp.propriete.accesEau">Acces Eau</span></dt>
+        <dd>
+          <span>{{ propriete.accesEau }}</span>
+        </dd>
+        <dt><span jhiTranslate="buntuApp.propriete.accesADSL">Acces ADSL</span></dt>
+        <dd>
+          <span>{{ propriete.accesADSL }}</span>
+        </dd>
+        <dt><span jhiTranslate="buntuApp.propriete.meuble">Meuble</span></dt>
+        <dd>
+          <span>{{ propriete.meuble }}</span>
+        </dd>
+        <dt><span jhiTranslate="buntuApp.propriete.enPromo">En Promo</span></dt>
+        <dd>
+          <span>{{ propriete.enPromo | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="buntuApp.propriete.periode">Periode</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'buntuApp.PeriodeDePaiement.' + propriete.periode }}">{{ propriete.periode }}</span>
+        </dd>
+        <dt><span jhiTranslate="buntuApp.propriete.distancePrimaire">Distance Primaire</span></dt>
+        <dd>
+          <span>{{ propriete.distancePrimaire }}</span>
+        </dd>
+        <dt><span jhiTranslate="buntuApp.propriete.distanceSecondaire">Distance Secondaire</span></dt>
+        <dd>
+          <span>{{ propriete.distanceSecondaire }}</span>
+        </dd>
+        <dt><span jhiTranslate="buntuApp.propriete.distanceLycee">Distance Lycee</span></dt>
+        <dd>
+          <span>{{ propriete.distanceLycee }}</span>
+        </dd>
+        <dt><span jhiTranslate="buntuApp.propriete.distancehopital">Distancehopital</span></dt>
+        <dd>
+          <span>{{ propriete.distancehopital }}</span>
+        </dd>
+        <dt><span jhiTranslate="buntuApp.propriete.distanceclinique">Distanceclinique</span></dt>
+        <dd>
+          <span>{{ propriete.distanceclinique }}</span>
+        </dd>
+        <dt><span jhiTranslate="buntuApp.propriete.urlPhotoPrincipale">Url Photo Principale</span></dt>
+        <dd>
+          <span>{{ propriete.urlPhotoPrincipale }}</span>
+        </dd>
+        <dt><span jhiTranslate="buntuApp.propriete.urlPhoto1">Url Photo 1</span></dt>
+        <dd>
+          <span>{{ propriete.urlPhoto1 }}</span>
+        </dd>
+        <dt><span jhiTranslate="buntuApp.propriete.urlPhoto2">Url Photo 2</span></dt>
+        <dd>
+          <span>{{ propriete.urlPhoto2 }}</span>
+        </dd>
+        <dt><span jhiTranslate="buntuApp.propriete.urlPhoto3">Url Photo 3</span></dt>
+        <dd>
+          <span>{{ propriete.urlPhoto3 }}</span>
+        </dd>
+        <dt><span jhiTranslate="buntuApp.propriete.urlPhoto4">Url Photo 4</span></dt>
+        <dd>
+          <span>{{ propriete.urlPhoto4 }}</span>
+        </dd>
+        <dt><span jhiTranslate="buntuApp.propriete.urlPhoto5">Url Photo 5</span></dt>
+        <dd>
+          <span>{{ propriete.urlPhoto5 }}</span>
+        </dd>
+        <dt><span jhiTranslate="buntuApp.propriete.urlPhoto6">Url Photo 6</span></dt>
+        <dd>
+          <span>{{ propriete.urlPhoto6 }}</span>
+        </dd>
+        <dt><span jhiTranslate="buntuApp.propriete.urlVideo">Url Video</span></dt>
+        <dd>
+          <span>{{ propriete.urlVideo }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/propriete', propriete.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

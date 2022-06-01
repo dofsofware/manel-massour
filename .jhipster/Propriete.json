@@ -1,0 +1,172 @@
+{
+  "applications": "*",
+  "changelogDate": "20220531145055",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "propriete",
+  "fields": [
+    {
+      "fieldName": "reference",
+      "fieldType": "String",
+      "fieldValidateRules": ["unique"]
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "TypeDeBien",
+      "fieldValues": "TERRAIN,MAISON,APPARTEMENT,CHAMBRE,BUREAU,LOCAL_DE_COMMERCE,VERGER,HANGAR"
+    },
+    {
+      "fieldName": "modeDeTransaction",
+      "fieldType": "Transaction",
+      "fieldValues": "VENDRE,LOCATION"
+    },
+    {
+      "fieldName": "etat",
+      "fieldType": "Etat",
+      "fieldValues": "NEUF,OCCASION"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "prix",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "adresse",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "adresseTronque",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "80"
+    },
+    {
+      "fieldName": "latitude",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "longitude",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "superficie",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "anneeDeConstruction",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["min"],
+      "fieldValidateRulesMin": "1900"
+    },
+    {
+      "fieldName": "nombreDePieces",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "nombreDeDouches",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "nombreDeGarages",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "modeDePaiement",
+      "fieldType": "ModeDePaiement",
+      "fieldValues": "COMPTANT,MORATOIRE"
+    },
+    {
+      "fieldName": "papier",
+      "fieldType": "Papier",
+      "fieldValues": "TITRE_FONCIER,BAIL,DELIBERATION"
+    },
+    {
+      "fieldName": "acceEelectricite",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "accesEau",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "accesADSL",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "meuble",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "enPromo",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "periode",
+      "fieldType": "PeriodeDePaiement",
+      "fieldValues": "JOUR,SEMAINE,MOIS,ANNEE"
+    },
+    {
+      "fieldName": "distancePrimaire",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "distanceSecondaire",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "distanceLycee",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "distancehopital",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "distanceclinique",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "urlPhotoPrincipale",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "urlPhoto1",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "urlPhoto2",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "urlPhoto3",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "urlPhoto4",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "urlPhoto5",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "urlPhoto6",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "urlVideo",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Propriete",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "no"
+}

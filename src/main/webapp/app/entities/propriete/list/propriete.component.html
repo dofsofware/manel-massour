@@ -1,0 +1,148 @@
+<div>
+  <h2 id="page-heading" data-cy="ProprieteHeading">
+    <span jhiTranslate="buntuApp.propriete.home.title">Proprietes</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="buntuApp.propriete.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-propriete"
+        [routerLink]="['/propriete/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="buntuApp.propriete.home.createLabel"> Create a new Propriete </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="proprietes?.length === 0">
+    <span jhiTranslate="buntuApp.propriete.home.notFound">No proprietes found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="proprietes && proprietes.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="buntuApp.propriete.reference">Reference</span></th>
+          <th scope="col"><span jhiTranslate="buntuApp.propriete.type">Type</span></th>
+          <th scope="col"><span jhiTranslate="buntuApp.propriete.modeDeTransaction">Mode De Transaction</span></th>
+          <th scope="col"><span jhiTranslate="buntuApp.propriete.etat">Etat</span></th>
+          <th scope="col"><span jhiTranslate="buntuApp.propriete.description">Description</span></th>
+          <th scope="col"><span jhiTranslate="buntuApp.propriete.prix">Prix</span></th>
+          <th scope="col"><span jhiTranslate="buntuApp.propriete.adresse">Adresse</span></th>
+          <th scope="col"><span jhiTranslate="buntuApp.propriete.adresseTronque">Adresse Tronque</span></th>
+          <th scope="col"><span jhiTranslate="buntuApp.propriete.latitude">Latitude</span></th>
+          <th scope="col"><span jhiTranslate="buntuApp.propriete.longitude">Longitude</span></th>
+          <th scope="col"><span jhiTranslate="buntuApp.propriete.superficie">Superficie</span></th>
+          <th scope="col"><span jhiTranslate="buntuApp.propriete.anneeDeConstruction">Annee De Construction</span></th>
+          <th scope="col"><span jhiTranslate="buntuApp.propriete.nombreDePieces">Nombre De Pieces</span></th>
+          <th scope="col"><span jhiTranslate="buntuApp.propriete.nombreDeDouches">Nombre De Douches</span></th>
+          <th scope="col"><span jhiTranslate="buntuApp.propriete.nombreDeGarages">Nombre De Garages</span></th>
+          <th scope="col"><span jhiTranslate="buntuApp.propriete.modeDePaiement">Mode De Paiement</span></th>
+          <th scope="col"><span jhiTranslate="buntuApp.propriete.papier">Papier</span></th>
+          <th scope="col"><span jhiTranslate="buntuApp.propriete.acceEelectricite">Acce Eelectricite</span></th>
+          <th scope="col"><span jhiTranslate="buntuApp.propriete.accesEau">Acces Eau</span></th>
+          <th scope="col"><span jhiTranslate="buntuApp.propriete.accesADSL">Acces ADSL</span></th>
+          <th scope="col"><span jhiTranslate="buntuApp.propriete.meuble">Meuble</span></th>
+          <th scope="col"><span jhiTranslate="buntuApp.propriete.enPromo">En Promo</span></th>
+          <th scope="col"><span jhiTranslate="buntuApp.propriete.periode">Periode</span></th>
+          <th scope="col"><span jhiTranslate="buntuApp.propriete.distancePrimaire">Distance Primaire</span></th>
+          <th scope="col"><span jhiTranslate="buntuApp.propriete.distanceSecondaire">Distance Secondaire</span></th>
+          <th scope="col"><span jhiTranslate="buntuApp.propriete.distanceLycee">Distance Lycee</span></th>
+          <th scope="col"><span jhiTranslate="buntuApp.propriete.distancehopital">Distancehopital</span></th>
+          <th scope="col"><span jhiTranslate="buntuApp.propriete.distanceclinique">Distanceclinique</span></th>
+          <th scope="col"><span jhiTranslate="buntuApp.propriete.urlPhotoPrincipale">Url Photo Principale</span></th>
+          <th scope="col"><span jhiTranslate="buntuApp.propriete.urlPhoto1">Url Photo 1</span></th>
+          <th scope="col"><span jhiTranslate="buntuApp.propriete.urlPhoto2">Url Photo 2</span></th>
+          <th scope="col"><span jhiTranslate="buntuApp.propriete.urlPhoto3">Url Photo 3</span></th>
+          <th scope="col"><span jhiTranslate="buntuApp.propriete.urlPhoto4">Url Photo 4</span></th>
+          <th scope="col"><span jhiTranslate="buntuApp.propriete.urlPhoto5">Url Photo 5</span></th>
+          <th scope="col"><span jhiTranslate="buntuApp.propriete.urlPhoto6">Url Photo 6</span></th>
+          <th scope="col"><span jhiTranslate="buntuApp.propriete.urlVideo">Url Video</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let propriete of proprietes; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/propriete', propriete.id, 'view']">{{ propriete.id }}</a>
+          </td>
+          <td>{{ propriete.reference }}</td>
+          <td jhiTranslate="{{ 'buntuApp.TypeDeBien.' + propriete.type }}">{{ propriete.type }}</td>
+          <td jhiTranslate="{{ 'buntuApp.Transaction.' + propriete.modeDeTransaction }}">{{ propriete.modeDeTransaction }}</td>
+          <td jhiTranslate="{{ 'buntuApp.Etat.' + propriete.etat }}">{{ propriete.etat }}</td>
+          <td>{{ propriete.description }}</td>
+          <td>{{ propriete.prix }}</td>
+          <td>{{ propriete.adresse }}</td>
+          <td>{{ propriete.adresseTronque }}</td>
+          <td>{{ propriete.latitude }}</td>
+          <td>{{ propriete.longitude }}</td>
+          <td>{{ propriete.superficie }}</td>
+          <td>{{ propriete.anneeDeConstruction }}</td>
+          <td>{{ propriete.nombreDePieces }}</td>
+          <td>{{ propriete.nombreDeDouches }}</td>
+          <td>{{ propriete.nombreDeGarages }}</td>
+          <td jhiTranslate="{{ 'buntuApp.ModeDePaiement.' + propriete.modeDePaiement }}">{{ propriete.modeDePaiement }}</td>
+          <td jhiTranslate="{{ 'buntuApp.Papier.' + propriete.papier }}">{{ propriete.papier }}</td>
+          <td>{{ propriete.acceEelectricite }}</td>
+          <td>{{ propriete.accesEau }}</td>
+          <td>{{ propriete.accesADSL }}</td>
+          <td>{{ propriete.meuble }}</td>
+          <td>{{ propriete.enPromo | formatMediumDate }}</td>
+          <td jhiTranslate="{{ 'buntuApp.PeriodeDePaiement.' + propriete.periode }}">{{ propriete.periode }}</td>
+          <td>{{ propriete.distancePrimaire }}</td>
+          <td>{{ propriete.distanceSecondaire }}</td>
+          <td>{{ propriete.distanceLycee }}</td>
+          <td>{{ propriete.distancehopital }}</td>
+          <td>{{ propriete.distanceclinique }}</td>
+          <td>{{ propriete.urlPhotoPrincipale }}</td>
+          <td>{{ propriete.urlPhoto1 }}</td>
+          <td>{{ propriete.urlPhoto2 }}</td>
+          <td>{{ propriete.urlPhoto3 }}</td>
+          <td>{{ propriete.urlPhoto4 }}</td>
+          <td>{{ propriete.urlPhoto5 }}</td>
+          <td>{{ propriete.urlPhoto6 }}</td>
+          <td>{{ propriete.urlVideo }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/propriete', propriete.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/propriete', propriete.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(propriete)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

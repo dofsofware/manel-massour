@@ -7,13 +7,26 @@
     <meta name="description" content="Description for buntu" />
     <meta name="google" content="notranslate" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="theme-color" content="#000000" />
+    <meta name="theme-color" content="#3454d1" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="img-src * 'self' data: *; default-src *; style-src 'self' https://* 'unsafe-inline'; script-src 'self' https://* 'unsafe-inline' 'unsafe-eval'"
+    />
     <base href="/" />
-    <link rel="icon" href="favicon.ico" />
+    <link rel="icon" href="content/assets/images/favicon.ico" />
     <link rel="manifest" href="manifest.webapp" />
     <link rel="stylesheet" href="content/css/loading.css" />
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- <script type="text/javascript" src="./content/assets/js/index.bundle.js?10eb1139a9f2b8f356b2"></script> -->
+    <!-- leaflet css  -->
+    <!-- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" /> -->
+    <!-- leaflet autocomplete  -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/tomik23/autocomplete@1.8.3/dist/css/autocomplete.min.css" />
     <!-- jhipster-needle-add-resources-to-root - JHipster will add new resources here -->
   </head>
+
   <body>
     <!--[if lt IE 9]>
       <p class="browserupgrade">
@@ -21,20 +34,15 @@
         your experience.
       </p>
     <![endif]-->
+
     <jhi-main>
-      <div class="app-loading">
-        <div class="lds-pacman">
-          <div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
-          <div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
+      <div class="loading-screen" id="loading-screen">
+        <div class="spinner-container">
+          <img src="./content/assets/images/buntu.png" />
+          <div class="spinner"></div>
         </div>
+        <h3>BUNTU</h3>
+        <p>real estate</p>
       </div>
       <div class="app-loading">
         <div id="jhipster-error" style="display: none">
@@ -124,5 +132,23 @@
       r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
       ga('create','UA-XXXXX-X');ga('send','pageview');
     </script>-->
+
+    <!-- jquery  -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> -->
+    <!-- SCROLL TO TOP -->
+    <a href="javascript:" id="return-to-top"><i class="fa fa-chevron-up"></i></a>
+    <!-- END SCROLL TO TOP -->
+    <!-- <script type="text/javascript" src="./content/assets/js/index.bundle.js?10eb1139a9f2b8f356b2"></script> -->
+
+    <!-- leaflet js  -->
+    <!-- <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script> -->
+    <!-- leaflet js  -->
+
+    <!-- leaflet js  -->
+    <!-- <script src="content/assets/js/leaflet.js"></script> -->
+    <!-- leaflet autocomplete  -->
+    <script src="https://cdn.jsdelivr.net/gh/tomik23/autocomplete@1.8.3/dist/js/autocomplete.min.js"></script>
+    <!-- leaflet autocompilation js  -->
+    <script src="content/assets/js/autocompilation.js"></script>
   </body>
 </html>

@@ -1,0 +1,15 @@
+{
+  "applications": "*",
+  "changelogDate": "20220531145052",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "recherche",
+  "fields": [],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Recherche",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "no"
+}

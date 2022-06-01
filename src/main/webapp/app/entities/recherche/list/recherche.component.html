@@ -1,0 +1,1409 @@
+<!-- MAPS -->
+<div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-7" id="carte">
+        <div class="sticky-top">
+          <!-- LEAFLET MAP -->
+          <div id="map" style="position: relatif">
+            <div class="leaflet-control coordinate"></div>
+          </div>
+          <div id="pubcarte"><a href="https://www.tech-xel.com/" target="_blank">&copy; CopyRight Buntu 2022 By Tech Xel</a></div>
+        </div>
+      </div>
+      <div class="col-lg-5" id="resultat">
+        <div class="search__area bg__shadow">
+          <div class="container-fluid">
+            <div class="col-12">
+              <div class="tabs__custom-v2">
+                <!-- FILTER VERTICAL -->
+                <ul class="nav nav-pills myTab" role="tablist">
+                  <li class="list-inline-item mr-auto">
+                    <div class="btn-group">
+                      <a
+                        href="javascript:void(0)"
+                        class="dropdown-toggle"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                      >
+                        <span class="title-text" id="triage">Trier par</span>
+                      </a>
+                      <div class="dropdown-menu">
+                        <a class="dropdown-item" href="javascript:void(0)">Peu importe</a>
+                        <a class="dropdown-item" href="javascript:void(0)">Du moins cher au plus cher</a>
+                        <a class="dropdown-item" href="javascript:void(0)">Du plus cher au moins cher </a>
+                        <a class="dropdown-item" href="javascript:void(0)">A ventre</a>
+
+                        <a class="dropdown-item" href="javascript:void(0)">A louer</a>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="nav-item" title="afficher la carte ou pas">
+                    <a class="nav-link" href="javascript:void(0)" id="sansCarte"> <span class="fa fa-expand"></span> Visibilité carte </a>
+                  </li>
+                  <li class="nav-item" id="filtre" title="filtrage">
+                    <a class="nav-link" href="javascript:void(0)"> <span class="fa fa-filter"></span> filtre </a>
+                  </li>
+                  <li class="nav-item" title="liste">
+                    <a
+                      class="nav-link"
+                      data-toggle="pill"
+                      href="#pills-tab-one"
+                      role="tab"
+                      aria-controls="pills-tab-one"
+                      aria-selected="true"
+                    >
+                      <span class="fa fa-th-list"></span> liste
+                    </a>
+                  </li>
+                  <li class="nav-item" title="grille">
+                    <a
+                      class="nav-link active"
+                      data-toggle="pill"
+                      href="#pills-tab-two"
+                      role="tab"
+                      aria-controls="pills-tab-two"
+                      aria-selected="false"
+                    >
+                      <span class="fa fa-th-large"></span> grille
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="search__area-inner zoneRecherche" id="filtre_">
+              <div class="row">
+                <div class="auto-search-wrapper col-12">
+                  <div class="form-group">
+                    <input
+                      type="text"
+                      autocomplete="off"
+                      id="search"
+                      class="form-control auto-search-wrapper"
+                      placeholder="Commune, Arrondissement ou Region . . . ."
+                    />
+                  </div>
+                </div>
+                <div class="col-sm-12 col-lg-6 col-md-6">
+                  <div class="form-group">
+                    <select class="wide select_option" id="categories">
+                      <option value="tout">Toutes Catégories</option>
+                      <option value="terrain">Terrain</option>
+                      <option value="maison">Maison</option>
+                      <option value="appartement">Appartement</option>
+                      <option value="bureau">Bureau</option>
+                      <option value="chambre">Chambre</option>
+                      <option value="commerce">Local Commercial</option>
+                      <option value="verger">Verger</option>
+                      <option value="hangar">Hangar</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-sm-12 col-lg-6 col-md-6">
+                  <div class="form-group">
+                    <select class="wide select_option" id="nbpieces">
+                      <option value="tout">Nb de pièces</option>
+                      <option value="terrain">1</option>
+                      <option value="maison">2</option>
+                      <option value="appartement">3</option>
+                      <option value="bureau">4</option>
+                      <option value="chambre">5</option>
+                      <option value="commerce">6</option>
+                      <option value="verger">7</option>
+                      <option value="hangar">8</option>
+                      <option value="hangar">9</option>
+                      <option value="hangar">10 ou +</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-12 col-lg-6 col-md-6 auto-search-wrapper">
+                  <div class="form-group">
+                    <button class="btn btn-block form-control" id="budget">Votre budget</button>
+                  </div>
+                </div>
+                <div class="col-12 col-lg-6 col-md-6 auto-search-wrapper">
+                  <div class="form-group">
+                    <button id="plusDeCriteres" class="btn btn-block form-control">Plus de critères</button>
+                  </div>
+                </div>
+                <div id="budget_min" class="col-12 col-lg-6 col-md-6">
+                  <div>
+                    <div class="form-group">
+                      <input
+                        type="number"
+                        autocomplete="off"
+                        id="min"
+                        class="form-control"
+                        placeholder="minimum"
+                        style="position: relatif"
+                      />
+                      <span class="title-text bold" style="position: absolute; top: 10px; right: 20px; color: #32b019">Fcfa</span>
+                    </div>
+                  </div>
+                </div>
+                <div id="budget_max" class="col-12 col-lg-6 col-md-6">
+                  <div>
+                    <div class="form-group">
+                      <input
+                        type="number"
+                        autocomplete="off"
+                        id="max"
+                        class="form-control"
+                        placeholder="maximum"
+                        style="position: relatif"
+                      />
+                      <span class="title-text bold" style="position: absolute; top: 10px; right: 20px; color: #32b019">Fcfa</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-6 col-lg-4 col-md-4 PlusDeCriteres_">
+                  <div class="form-group">
+                    <label class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" />
+                      <span class="custom-control-label">Accès Eau </span>
+                    </label>
+                  </div>
+                </div>
+                <div class="col-6 col-lg-4 col-md-4 PlusDeCriteres_">
+                  <div class="form-group">
+                    <label class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" />
+                      <span class="custom-control-label">Accès Electricité </span>
+                    </label>
+                  </div>
+                </div>
+                <div class="col-6 col-lg-4 col-md-4 PlusDeCriteres_">
+                  <div class="form-group">
+                    <label class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" />
+                      <span class="custom-control-label">Accès ADSL </span>
+                    </label>
+                  </div>
+                </div>
+                <div class="col-6 col-lg-4 col-md-4 PlusDeCriteres_">
+                  <div class="form-group">
+                    <label class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" />
+                      <span class="custom-control-label">Meublé </span>
+                    </label>
+                  </div>
+                </div>
+                <div class="col-12 col-lg-8 col-md-8 PlusDeCriteres_">
+                  <div class="form-group">
+                    <label class="custom-control custom-radio custom-control-inline">
+                      <input class="custom-control-input" checked="" type="radio" name="gender" value="option1" />
+                      <span class="custom-control-label"> Titre foncier </span>
+                    </label>
+                    <label class="custom-control custom-radio custom-control-inline">
+                      <input class="custom-control-input" type="radio" name="gender" value="option2" />
+                      <span class="custom-control-label"> Bail </span>
+                    </label>
+                    <label class="custom-control custom-radio custom-control-inline">
+                      <input class="custom-control-input" type="radio" name="gender" value="option2" />
+                      <span class="custom-control-label"> Délibération </span>
+                    </label>
+                  </div>
+                  <!-- form-group end.// -->
+                </div>
+                <div class="col-12">
+                  <div class="form-group">
+                    <button class="btn btn-primary text-uppercase btn-block" id="rechercher">
+                      Rechercher <i class="fa fa-search ml-1"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- LISTING LIST -->
+        <section class="zoneRecherche">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="tabs__custom-v2">
+                      <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade" id="pills-tab-one" role="tabpanel" aria-labelledby="pills-tab-one">
+                          <div class="row">
+                            <div class="col-lg-12">
+                              <div class="card__image card__box-v1">
+                                <div class="row no-gutters">
+                                  <div class="col-md-4 col-lg-3 col-xl-4">
+                                    <div class="card__image__header h-250">
+                                      <a href="#">
+                                        <div class="ribbon text-capitalize">Bail</div>
+                                        <img src="../../../../content/assets/images/1.jpg" alt="" class="img-fluid w100 img-transition" />
+                                        <div class="info">à vendre</div>
+                                      </a>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4 col-lg-6 col-xl-5 my-auto">
+                                    <div class="card__image__body">
+                                      <span class="badge badge-primary text-capitalize mb-2">Maison</span>
+                                      <h6>
+                                        <a href="#">maison famillale sur la N1</a>
+                                      </h6>
+                                      <div class="card__image__body-desc">
+                                        <p class="text-capitalize">
+                                          <i class="fa fa-map-marker"></i>
+                                          Commune de Sébikhotane, Arrondissement de Diamniadio, Région de Dakar, Sénégal
+                                        </p>
+                                      </div>
+
+                                      <ul class="list-inline card__content">
+                                        <li class="list-inline-item">
+                                          <span> <i class="fa fa-bath"></i> 2 </span>
+                                        </li>
+                                        <li class="list-inline-item">
+                                          <span> <i class="fa fa-bed"></i> 5 </span>
+                                        </li>
+                                        <li class="list-inline-item">
+                                          <span> <i class="fa fa-inbox"></i> 1 </span>
+                                        </li>
+                                        <li class="list-inline-item">
+                                          <span> <i class="fa fa-map"></i> 4300 m<sup>2</sup> </span>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4 col-lg-3 col-xl-3 my-auto card__image__footer-first">
+                                    <div class="card__image__footer">
+                                      <ul class="list-inline my-auto ml-auto price">
+                                        <li class="list-inline-item">
+                                          <h6>25.000.000 Fcfa</h6>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-12">
+                              <div class="card__image card__box-v1">
+                                <div class="row no-gutters">
+                                  <div class="col-md-4 col-lg-3 col-xl-4">
+                                    <div class="card__image__header h-250">
+                                      <a href="#">
+                                        <div class="ribbon text-capitalize">Bail</div>
+                                        <img src="../../../../content/assets/images/1.jpg" alt="" class="img-fluid w100 img-transition" />
+                                        <div class="info">à vendre</div>
+                                      </a>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4 col-lg-6 col-xl-5 my-auto">
+                                    <div class="card__image__body">
+                                      <span class="badge badge-primary text-capitalize mb-2">Maison</span>
+                                      <h6>
+                                        <a href="#">maison famillale sur la N1</a>
+                                      </h6>
+                                      <div class="card__image__body-desc">
+                                        <p class="text-capitalize">
+                                          <i class="fa fa-map-marker"></i>
+                                          Commune de Sébikhotane, Arrondissement de Diamniadio, Région de Dakar, Sénégal
+                                        </p>
+                                      </div>
+
+                                      <ul class="list-inline card__content">
+                                        <li class="list-inline-item">
+                                          <span> <i class="fa fa-bath"></i> 2 </span>
+                                        </li>
+                                        <li class="list-inline-item">
+                                          <span> <i class="fa fa-bed"></i> 5 </span>
+                                        </li>
+                                        <li class="list-inline-item">
+                                          <span> <i class="fa fa-inbox"></i> 1 </span>
+                                        </li>
+                                        <li class="list-inline-item">
+                                          <span> <i class="fa fa-map"></i> 4300 m<sup>2</sup> </span>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4 col-lg-3 col-xl-3 my-auto card__image__footer-first">
+                                    <div class="card__image__footer">
+                                      <ul class="list-inline my-auto ml-auto price">
+                                        <li class="list-inline-item">
+                                          <h6>25.000.000 Fcfa</h6>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-12">
+                              <div class="card__image card__box-v1">
+                                <div class="row no-gutters">
+                                  <div class="col-md-4 col-lg-3 col-xl-4">
+                                    <div class="card__image__header h-250">
+                                      <a href="#">
+                                        <div class="ribbon text-capitalize">Bail</div>
+                                        <img src="../../../../content/assets/images/1.jpg" alt="" class="img-fluid w100 img-transition" />
+                                        <div class="info">à vendre</div>
+                                      </a>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4 col-lg-6 col-xl-5 my-auto">
+                                    <div class="card__image__body">
+                                      <span class="badge badge-primary text-capitalize mb-2">Maison</span>
+                                      <h6>
+                                        <a href="#">maison famillale sur la N1</a>
+                                      </h6>
+                                      <div class="card__image__body-desc">
+                                        <p class="text-capitalize">
+                                          <i class="fa fa-map-marker"></i>
+                                          Commune de Sébikhotane, Arrondissement de Diamniadio, Région de Dakar, Sénégal
+                                        </p>
+                                      </div>
+
+                                      <ul class="list-inline card__content">
+                                        <li class="list-inline-item">
+                                          <span> <i class="fa fa-bath"></i> 2 </span>
+                                        </li>
+                                        <li class="list-inline-item">
+                                          <span> <i class="fa fa-bed"></i> 5 </span>
+                                        </li>
+                                        <li class="list-inline-item">
+                                          <span> <i class="fa fa-inbox"></i> 1 </span>
+                                        </li>
+                                        <li class="list-inline-item">
+                                          <span> <i class="fa fa-map"></i> 4300 m<sup>2</sup> </span>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4 col-lg-3 col-xl-3 my-auto card__image__footer-first">
+                                    <div class="card__image__footer">
+                                      <ul class="list-inline my-auto ml-auto price">
+                                        <li class="list-inline-item">
+                                          <h6>25.000.000 Fcfa</h6>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-12">
+                              <div class="card__image card__box-v1">
+                                <div class="row no-gutters">
+                                  <div class="col-md-4 col-lg-3 col-xl-4">
+                                    <div class="card__image__header h-250">
+                                      <a href="#">
+                                        <div class="ribbon text-capitalize">Bail</div>
+                                        <img src="../../../../content/assets/images/1.jpg" alt="" class="img-fluid w100 img-transition" />
+                                        <div class="info">à vendre</div>
+                                      </a>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4 col-lg-6 col-xl-5 my-auto">
+                                    <div class="card__image__body">
+                                      <span class="badge badge-primary text-capitalize mb-2">Maison</span>
+                                      <h6>
+                                        <a href="#">maison famillale sur la N1</a>
+                                      </h6>
+                                      <div class="card__image__body-desc">
+                                        <p class="text-capitalize">
+                                          <i class="fa fa-map-marker"></i>
+                                          Commune de Sébikhotane, Arrondissement de Diamniadio, Région de Dakar, Sénégal
+                                        </p>
+                                      </div>
+
+                                      <ul class="list-inline card__content">
+                                        <li class="list-inline-item">
+                                          <span> <i class="fa fa-bath"></i> 2 </span>
+                                        </li>
+                                        <li class="list-inline-item">
+                                          <span> <i class="fa fa-bed"></i> 5 </span>
+                                        </li>
+                                        <li class="list-inline-item">
+                                          <span> <i class="fa fa-inbox"></i> 1 </span>
+                                        </li>
+                                        <li class="list-inline-item">
+                                          <span> <i class="fa fa-map"></i> 4300 m<sup>2</sup> </span>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4 col-lg-3 col-xl-3 my-auto card__image__footer-first">
+                                    <div class="card__image__footer">
+                                      <ul class="list-inline my-auto ml-auto price">
+                                        <li class="list-inline-item">
+                                          <h6>25.000.000 Fcfa</h6>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-12">
+                              <div class="card__image card__box-v1">
+                                <div class="row no-gutters">
+                                  <div class="col-md-4 col-lg-3 col-xl-4">
+                                    <div class="card__image__header h-250">
+                                      <a href="#">
+                                        <div class="ribbon text-capitalize">Bail</div>
+                                        <img src="../../../../content/assets/images/1.jpg" alt="" class="img-fluid w100 img-transition" />
+                                        <div class="info">à vendre</div>
+                                      </a>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4 col-lg-6 col-xl-5 my-auto">
+                                    <div class="card__image__body">
+                                      <span class="badge badge-primary text-capitalize mb-2">Maison</span>
+                                      <h6>
+                                        <a href="#">maison famillale sur la N1</a>
+                                      </h6>
+                                      <div class="card__image__body-desc">
+                                        <p class="text-capitalize">
+                                          <i class="fa fa-map-marker"></i>
+                                          Commune de Sébikhotane, Arrondissement de Diamniadio, Région de Dakar, Sénégal
+                                        </p>
+                                      </div>
+
+                                      <ul class="list-inline card__content">
+                                        <li class="list-inline-item">
+                                          <span> <i class="fa fa-bath"></i> 2 </span>
+                                        </li>
+                                        <li class="list-inline-item">
+                                          <span> <i class="fa fa-bed"></i> 5 </span>
+                                        </li>
+                                        <li class="list-inline-item">
+                                          <span> <i class="fa fa-inbox"></i> 1 </span>
+                                        </li>
+                                        <li class="list-inline-item">
+                                          <span> <i class="fa fa-map"></i> 4300 m<sup>2</sup> </span>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4 col-lg-3 col-xl-3 my-auto card__image__footer-first">
+                                    <div class="card__image__footer">
+                                      <ul class="list-inline my-auto ml-auto price">
+                                        <li class="list-inline-item">
+                                          <h6>25.000.000 Fcfa</h6>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-12">
+                              <div class="card__image card__box-v1">
+                                <div class="row no-gutters">
+                                  <div class="col-md-4 col-lg-3 col-xl-4">
+                                    <div class="card__image__header h-250">
+                                      <a href="#">
+                                        <div class="ribbon text-capitalize">Bail</div>
+                                        <img src="../../../../content/assets/images/1.jpg" alt="" class="img-fluid w100 img-transition" />
+                                        <div class="info">à vendre</div>
+                                      </a>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4 col-lg-6 col-xl-5 my-auto">
+                                    <div class="card__image__body">
+                                      <span class="badge badge-primary text-capitalize mb-2">Maison</span>
+                                      <h6>
+                                        <a href="#">maison famillale sur la N1</a>
+                                      </h6>
+                                      <div class="card__image__body-desc">
+                                        <p class="text-capitalize">
+                                          <i class="fa fa-map-marker"></i>
+                                          Commune de Sébikhotane, Arrondissement de Diamniadio, Région de Dakar, Sénégal
+                                        </p>
+                                      </div>
+
+                                      <ul class="list-inline card__content">
+                                        <li class="list-inline-item">
+                                          <span> <i class="fa fa-bath"></i> 2 </span>
+                                        </li>
+                                        <li class="list-inline-item">
+                                          <span> <i class="fa fa-bed"></i> 5 </span>
+                                        </li>
+                                        <li class="list-inline-item">
+                                          <span> <i class="fa fa-inbox"></i> 1 </span>
+                                        </li>
+                                        <li class="list-inline-item">
+                                          <span> <i class="fa fa-map"></i> 4300 m<sup>2</sup> </span>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4 col-lg-3 col-xl-3 my-auto card__image__footer-first">
+                                    <div class="card__image__footer">
+                                      <ul class="list-inline my-auto ml-auto price">
+                                        <li class="list-inline-item">
+                                          <h6>25.000.000 Fcfa</h6>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-12">
+                              <div class="card__image card__box-v1">
+                                <div class="row no-gutters">
+                                  <div class="col-md-4 col-lg-3 col-xl-4">
+                                    <div class="card__image__header h-250">
+                                      <a href="#">
+                                        <div class="ribbon text-capitalize">Bail</div>
+                                        <img src="../../../../content/assets/images/1.jpg" alt="" class="img-fluid w100 img-transition" />
+                                        <div class="info">à vendre</div>
+                                      </a>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4 col-lg-6 col-xl-5 my-auto">
+                                    <div class="card__image__body">
+                                      <span class="badge badge-primary text-capitalize mb-2">Maison</span>
+                                      <h6>
+                                        <a href="#">maison famillale sur la N1</a>
+                                      </h6>
+                                      <div class="card__image__body-desc">
+                                        <p class="text-capitalize">
+                                          <i class="fa fa-map-marker"></i>
+                                          Commune de Sébikhotane, Arrondissement de Diamniadio, Région de Dakar, Sénégal
+                                        </p>
+                                      </div>
+
+                                      <ul class="list-inline card__content">
+                                        <li class="list-inline-item">
+                                          <span> <i class="fa fa-bath"></i> 2 </span>
+                                        </li>
+                                        <li class="list-inline-item">
+                                          <span> <i class="fa fa-bed"></i> 5 </span>
+                                        </li>
+                                        <li class="list-inline-item">
+                                          <span> <i class="fa fa-inbox"></i> 1 </span>
+                                        </li>
+                                        <li class="list-inline-item">
+                                          <span> <i class="fa fa-map"></i> 4300 m<sup>2</sup> </span>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4 col-lg-3 col-xl-3 my-auto card__image__footer-first">
+                                    <div class="card__image__footer">
+                                      <ul class="list-inline my-auto ml-auto price">
+                                        <li class="list-inline-item">
+                                          <h6>25.000.000 Fcfa</h6>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="clearfix"></div>
+                        </div>
+                        <div class="tab-pane fade show active" id="pills-tab-two" role="tabpanel" aria-labelledby="pills-tab-two">
+                          <div class="row">
+                            <div class="col-md-6 grilleVersion2">
+                              <div class="card__image card__box">
+                                <div class="card__image-header h-250">
+                                  <div class="ribbon text-capitalize">Bail</div>
+                                  <img src="../../../../content/assets/images/1.jpg" alt="" class="img-fluid w100 img-transition" />
+                                  <div class="info">à vendre</div>
+                                </div>
+                                <div class="card__image-body">
+                                  <span class="badge badge-primary text-capitalize mb-2">maison</span>
+                                  <h6 class="text-capitalize">maison famillale sur la N1</h6>
+
+                                  <p class="text-capitalize">
+                                    <i class="fa fa-map-marker"></i>
+                                    Commune de Sébikhotane, Arrondissement de Diamniadio, Région de Dakar, Sénégal
+                                  </p>
+                                  <ul class="list-inline card__content">
+                                    <li class="list-inline-item">
+                                      <span>
+                                        douche <br />
+                                        <i class="fa fa-bath"></i> 2
+                                      </span>
+                                    </li>
+                                    <li class="list-inline-item">
+                                      <span>
+                                        pièce <br />
+                                        <i class="fa fa-bed"></i> 5
+                                      </span>
+                                    </li>
+                                    <li class="list-inline-item">
+                                      <span>
+                                        garage <br />
+                                        <i class="fa fa-inbox"></i> 1
+                                      </span>
+                                    </li>
+                                    <li class="list-inline-item">
+                                      <span>
+                                        superficie <br />
+                                        <i class="fa fa-map"></i> 4300 m<sup>2</sup>
+                                      </span>
+                                    </li>
+                                  </ul>
+                                </div>
+                                <div class="card__image-footer">
+                                  <!-- <figure>
+                                                      <img src="images/80x80.jpg" alt=""
+                                                          class="img-fluid rounded-circle">
+                                                  </figure>
+                                                  <ul class="list-inline my-auto">
+                                                      <li class="list-inline-item">
+                                                          <a href="#">
+                                                              tom wilson <br>
+                                                          </a>
+              
+                                                      </li>
+              
+                                                  </ul>-->
+                                  <ul class="list-inline my-auto ml-auto">
+                                    <li class="list-inline-item">
+                                      <h6>25.000.000 Fcfa</h6>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-md-6 grilleVersion2">
+                              <div class="card__image card__box">
+                                <div class="card__image-header h-250">
+                                  <div class="ribbon text-capitalize">Bail</div>
+                                  <img src="../../../../content/assets/images/1.jpg" alt="" class="img-fluid w100 img-transition" />
+                                  <div class="info">à vendre</div>
+                                </div>
+                                <div class="card__image-body">
+                                  <span class="badge badge-primary text-capitalize mb-2">maison</span>
+                                  <h6 class="text-capitalize">maison famillale sur la N1</h6>
+
+                                  <p class="text-capitalize">
+                                    <i class="fa fa-map-marker"></i>
+                                    Commune de Sébikhotane, Arrondissement de Diamniadio, Région de Dakar, Sénégal
+                                  </p>
+                                  <ul class="list-inline card__content">
+                                    <li class="list-inline-item">
+                                      <span>
+                                        douche <br />
+                                        <i class="fa fa-bath"></i> 2
+                                      </span>
+                                    </li>
+                                    <li class="list-inline-item">
+                                      <span>
+                                        pièce <br />
+                                        <i class="fa fa-bed"></i> 5
+                                      </span>
+                                    </li>
+                                    <li class="list-inline-item">
+                                      <span>
+                                        garage <br />
+                                        <i class="fa fa-inbox"></i> 1
+                                      </span>
+                                    </li>
+                                    <li class="list-inline-item">
+                                      <span>
+                                        superficie <br />
+                                        <i class="fa fa-map"></i> 4300 m<sup>2</sup>
+                                      </span>
+                                    </li>
+                                  </ul>
+                                </div>
+                                <div class="card__image-footer">
+                                  <!-- <figure>
+                                                      <img src="images/80x80.jpg" alt=""
+                                                          class="img-fluid rounded-circle">
+                                                  </figure>
+                                                  <ul class="list-inline my-auto">
+                                                      <li class="list-inline-item">
+                                                          <a href="#">
+                                                              tom wilson <br>
+                                                          </a>
+              
+                                                      </li>
+              
+                                                  </ul>-->
+                                  <ul class="list-inline my-auto ml-auto">
+                                    <li class="list-inline-item">
+                                      <h6>25.000.000 Fcfa</h6>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-md-6 grilleVersion2">
+                              <div class="card__image card__box">
+                                <div class="card__image-header h-250">
+                                  <div class="ribbon text-capitalize">Bail</div>
+                                  <img src="../../../../content/assets/images/1.jpg" alt="" class="img-fluid w100 img-transition" />
+                                  <div class="info">à vendre</div>
+                                </div>
+                                <div class="card__image-body">
+                                  <span class="badge badge-primary text-capitalize mb-2">maison</span>
+                                  <h6 class="text-capitalize">maison famillale sur la N1</h6>
+
+                                  <p class="text-capitalize">
+                                    <i class="fa fa-map-marker"></i>
+                                    Commune de Sébikhotane, Arrondissement de Diamniadio, Région de Dakar, Sénégal
+                                  </p>
+                                  <ul class="list-inline card__content">
+                                    <li class="list-inline-item">
+                                      <span>
+                                        douche <br />
+                                        <i class="fa fa-bath"></i> 2
+                                      </span>
+                                    </li>
+                                    <li class="list-inline-item">
+                                      <span>
+                                        pièce <br />
+                                        <i class="fa fa-bed"></i> 5
+                                      </span>
+                                    </li>
+                                    <li class="list-inline-item">
+                                      <span>
+                                        garage <br />
+                                        <i class="fa fa-inbox"></i> 1
+                                      </span>
+                                    </li>
+                                    <li class="list-inline-item">
+                                      <span>
+                                        superficie <br />
+                                        <i class="fa fa-map"></i> 4300 m<sup>2</sup>
+                                      </span>
+                                    </li>
+                                  </ul>
+                                </div>
+                                <div class="card__image-footer">
+                                  <!-- <figure>
+                                                      <img src="images/80x80.jpg" alt=""
+                                                          class="img-fluid rounded-circle">
+                                                  </figure>
+                                                  <ul class="list-inline my-auto">
+                                                      <li class="list-inline-item">
+                                                          <a href="#">
+                                                              tom wilson <br>
+                                                          </a>
+              
+                                                      </li>
+              
+                                                  </ul>-->
+                                  <ul class="list-inline my-auto ml-auto">
+                                    <li class="list-inline-item">
+                                      <h6>25.000.000 Fcfa</h6>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-md-6 grilleVersion2">
+                              <div class="card__image card__box">
+                                <div class="card__image-header h-250">
+                                  <div class="ribbon text-capitalize">Bail</div>
+                                  <img src="../../../../content/assets/images/1.jpg" alt="" class="img-fluid w100 img-transition" />
+                                  <div class="info">à vendre</div>
+                                </div>
+                                <div class="card__image-body">
+                                  <span class="badge badge-primary text-capitalize mb-2">maison</span>
+                                  <h6 class="text-capitalize">maison famillale sur la N1</h6>
+
+                                  <p class="text-capitalize">
+                                    <i class="fa fa-map-marker"></i>
+                                    Commune de Sébikhotane, Arrondissement de Diamniadio, Région de Dakar, Sénégal
+                                  </p>
+                                  <ul class="list-inline card__content">
+                                    <li class="list-inline-item">
+                                      <span>
+                                        douche <br />
+                                        <i class="fa fa-bath"></i> 2
+                                      </span>
+                                    </li>
+                                    <li class="list-inline-item">
+                                      <span>
+                                        pièce <br />
+                                        <i class="fa fa-bed"></i> 5
+                                      </span>
+                                    </li>
+                                    <li class="list-inline-item">
+                                      <span>
+                                        garage <br />
+                                        <i class="fa fa-inbox"></i> 1
+                                      </span>
+                                    </li>
+                                    <li class="list-inline-item">
+                                      <span>
+                                        superficie <br />
+                                        <i class="fa fa-map"></i> 4300 m<sup>2</sup>
+                                      </span>
+                                    </li>
+                                  </ul>
+                                </div>
+                                <div class="card__image-footer">
+                                  <!-- <figure>
+                                                      <img src="images/80x80.jpg" alt=""
+                                                          class="img-fluid rounded-circle">
+                                                  </figure>
+                                                  <ul class="list-inline my-auto">
+                                                      <li class="list-inline-item">
+                                                          <a href="#">
+                                                              tom wilson <br>
+                                                          </a>
+              
+                                                      </li>
+              
+                                                  </ul>-->
+                                  <ul class="list-inline my-auto ml-auto">
+                                    <li class="list-inline-item">
+                                      <h6>25.000.000 Fcfa</h6>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-md-6 grilleVersion2">
+                              <div class="card__image card__box">
+                                <div class="card__image-header h-250">
+                                  <div class="ribbon text-capitalize">Bail</div>
+                                  <img src="../../../../content/assets/images/1.jpg" alt="" class="img-fluid w100 img-transition" />
+                                  <div class="info">à vendre</div>
+                                </div>
+                                <div class="card__image-body">
+                                  <span class="badge badge-primary text-capitalize mb-2">maison</span>
+                                  <h6 class="text-capitalize">maison famillale sur la N1</h6>
+
+                                  <p class="text-capitalize">
+                                    <i class="fa fa-map-marker"></i>
+                                    Commune de Sébikhotane, Arrondissement de Diamniadio, Région de Dakar, Sénégal
+                                  </p>
+                                  <ul class="list-inline card__content">
+                                    <li class="list-inline-item">
+                                      <span>
+                                        douche <br />
+                                        <i class="fa fa-bath"></i> 2
+                                      </span>
+                                    </li>
+                                    <li class="list-inline-item">
+                                      <span>
+                                        pièce <br />
+                                        <i class="fa fa-bed"></i> 5
+                                      </span>
+                                    </li>
+                                    <li class="list-inline-item">
+                                      <span>
+                                        garage <br />
+                                        <i class="fa fa-inbox"></i> 1
+                                      </span>
+                                    </li>
+                                    <li class="list-inline-item">
+                                      <span>
+                                        superficie <br />
+                                        <i class="fa fa-map"></i> 4300 m<sup>2</sup>
+                                      </span>
+                                    </li>
+                                  </ul>
+                                </div>
+                                <div class="card__image-footer">
+                                  <!-- <figure>
+                                                      <img src="images/80x80.jpg" alt=""
+                                                          class="img-fluid rounded-circle">
+                                                  </figure>
+                                                  <ul class="list-inline my-auto">
+                                                      <li class="list-inline-item">
+                                                          <a href="#">
+                                                              tom wilson <br>
+                                                          </a>
+              
+                                                      </li>
+              
+                                                  </ul>-->
+                                  <ul class="list-inline my-auto ml-auto">
+                                    <li class="list-inline-item">
+                                      <h6>25.000.000 Fcfa</h6>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-md-6 grilleVersion2">
+                              <div class="card__image card__box">
+                                <div class="card__image-header h-250">
+                                  <div class="ribbon text-capitalize">Bail</div>
+                                  <img src="../../../../content/assets/images/1.jpg" alt="" class="img-fluid w100 img-transition" />
+                                  <div class="info">à vendre</div>
+                                </div>
+                                <div class="card__image-body">
+                                  <span class="badge badge-primary text-capitalize mb-2">maison</span>
+                                  <h6 class="text-capitalize">maison famillale sur la N1</h6>
+
+                                  <p class="text-capitalize">
+                                    <i class="fa fa-map-marker"></i>
+                                    Commune de Sébikhotane, Arrondissement de Diamniadio, Région de Dakar, Sénégal
+                                  </p>
+                                  <ul class="list-inline card__content">
+                                    <li class="list-inline-item">
+                                      <span>
+                                        douche <br />
+                                        <i class="fa fa-bath"></i> 2
+                                      </span>
+                                    </li>
+                                    <li class="list-inline-item">
+                                      <span>
+                                        pièce <br />
+                                        <i class="fa fa-bed"></i> 5
+                                      </span>
+                                    </li>
+                                    <li class="list-inline-item">
+                                      <span>
+                                        garage <br />
+                                        <i class="fa fa-inbox"></i> 1
+                                      </span>
+                                    </li>
+                                    <li class="list-inline-item">
+                                      <span>
+                                        superficie <br />
+                                        <i class="fa fa-map"></i> 4300 m<sup>2</sup>
+                                      </span>
+                                    </li>
+                                  </ul>
+                                </div>
+                                <div class="card__image-footer">
+                                  <!-- <figure>
+                                                      <img src="images/80x80.jpg" alt=""
+                                                          class="img-fluid rounded-circle">
+                                                  </figure>
+                                                  <ul class="list-inline my-auto">
+                                                      <li class="list-inline-item">
+                                                          <a href="#">
+                                                              tom wilson <br>
+                                                          </a>
+              
+                                                      </li>
+              
+                                                  </ul>-->
+                                  <ul class="list-inline my-auto ml-auto">
+                                    <li class="list-inline-item">
+                                      <h6>25.000.000 Fcfa</h6>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-md-6 grilleVersion2">
+                              <!-- ONE -->
+                              <div class="card__image card__box">
+                                <div class="card__image-header h-250">
+                                  <div class="ribbon text-capitalize">Bail</div>
+                                  <img src="../../../../content/assets/images/1.jpg" alt="" class="img-fluid w100 img-transition" />
+                                  <div class="info">à vendre</div>
+                                </div>
+                                <div class="card__image-body">
+                                  <span class="badge badge-primary text-capitalize mb-2">maison</span>
+                                  <h6 class="text-capitalize">maison famillale sur la N1</h6>
+
+                                  <p class="text-capitalize">
+                                    <i class="fa fa-map-marker"></i>
+                                    Commune de Sébikhotane, Arrondissement de Diamniadio, Région de Dakar, Sénégal
+                                  </p>
+                                  <ul class="list-inline card__content">
+                                    <li class="list-inline-item">
+                                      <span>
+                                        douche <br />
+                                        <i class="fa fa-bath"></i> 2
+                                      </span>
+                                    </li>
+                                    <li class="list-inline-item">
+                                      <span>
+                                        pièce <br />
+                                        <i class="fa fa-bed"></i> 5
+                                      </span>
+                                    </li>
+                                    <li class="list-inline-item">
+                                      <span>
+                                        garage <br />
+                                        <i class="fa fa-inbox"></i> 1
+                                      </span>
+                                    </li>
+                                    <li class="list-inline-item">
+                                      <span>
+                                        superficie <br />
+                                        <i class="fa fa-map"></i> 4300 m<sup>2</sup>
+                                      </span>
+                                    </li>
+                                  </ul>
+                                </div>
+                                <div class="card__image-footer">
+                                  <!-- <figure>
+                                                      <img src="images/80x80.jpg" alt=""
+                                                          class="img-fluid rounded-circle">
+                                                  </figure>
+                                                  <ul class="list-inline my-auto">
+                                                      <li class="list-inline-item">
+                                                          <a href="#">
+                                                              tom wilson <br>
+                                                          </a>
+              
+                                                      </li>
+              
+                                                  </ul>-->
+                                  <ul class="list-inline my-auto ml-auto">
+                                    <li class="list-inline-item">
+                                      <h6>25.000.000 Fcfa</h6>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-md-6 grilleVersion2">
+                              <!-- TWO -->
+                              <div class="card__image card__box">
+                                <div class="card__image-header h-250">
+                                  <div class="ribbon text-capitalize">Bail</div>
+                                  <img src="../../../../content/assets/images/1.jpg" alt="" class="img-fluid w100 img-transition" />
+                                  <div class="info">à vendre</div>
+                                </div>
+                                <div class="card__image-body">
+                                  <span class="badge badge-primary text-capitalize mb-2">maison</span>
+                                  <h6 class="text-capitalize">maison famillale sur la N1</h6>
+
+                                  <p class="text-capitalize">
+                                    <i class="fa fa-map-marker"></i>
+                                    Commune de Sébikhotane, Arrondissement de Diamniadio, Région de Dakar, Sénégal
+                                  </p>
+                                  <ul class="list-inline card__content">
+                                    <li class="list-inline-item">
+                                      <span>
+                                        douche <br />
+                                        <i class="fa fa-bath"></i> 2
+                                      </span>
+                                    </li>
+                                    <li class="list-inline-item">
+                                      <span>
+                                        pièce <br />
+                                        <i class="fa fa-bed"></i> 5
+                                      </span>
+                                    </li>
+                                    <li class="list-inline-item">
+                                      <span>
+                                        garage <br />
+                                        <i class="fa fa-inbox"></i> 1
+                                      </span>
+                                    </li>
+                                    <li class="list-inline-item">
+                                      <span>
+                                        superficie <br />
+                                        <i class="fa fa-map"></i> 4300 m<sup>2</sup>
+                                      </span>
+                                    </li>
+                                  </ul>
+                                </div>
+                                <div class="card__image-footer">
+                                  <!-- <figure>
+                                                      <img src="images/80x80.jpg" alt=""
+                                                          class="img-fluid rounded-circle">
+                                                  </figure>
+                                                  <ul class="list-inline my-auto">
+                                                      <li class="list-inline-item">
+                                                          <a href="#">
+                                                              tom wilson <br>
+                                                          </a>
+              
+                                                      </li>
+              
+                                                  </ul>-->
+                                  <ul class="list-inline my-auto ml-auto">
+                                    <li class="list-inline-item">
+                                      <h6>25.000.000 Fcfa</h6>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-md-6 grilleVersion2">
+                              <div class="card__image card__box">
+                                <div class="card__image-header h-250">
+                                  <div class="ribbon text-capitalize">Bail</div>
+                                  <img src="../../../../content/assets/images/1.jpg" alt="" class="img-fluid w100 img-transition" />
+                                  <div class="info">à vendre</div>
+                                </div>
+                                <div class="card__image-body">
+                                  <span class="badge badge-primary text-capitalize mb-2">maison</span>
+                                  <h6 class="text-capitalize">maison famillale sur la N1</h6>
+
+                                  <p class="text-capitalize">
+                                    <i class="fa fa-map-marker"></i>
+                                    Commune de Sébikhotane, Arrondissement de Diamniadio, Région de Dakar, Sénégal
+                                  </p>
+                                  <ul class="list-inline card__content">
+                                    <li class="list-inline-item">
+                                      <span>
+                                        douche <br />
+                                        <i class="fa fa-bath"></i> 2
+                                      </span>
+                                    </li>
+                                    <li class="list-inline-item">
+                                      <span>
+                                        pièce <br />
+                                        <i class="fa fa-bed"></i> 5
+                                      </span>
+                                    </li>
+                                    <li class="list-inline-item">
+                                      <span>
+                                        garage <br />
+                                        <i class="fa fa-inbox"></i> 1
+                                      </span>
+                                    </li>
+                                    <li class="list-inline-item">
+                                      <span>
+                                        superficie <br />
+                                        <i class="fa fa-map"></i> 4300 m<sup>2</sup>
+                                      </span>
+                                    </li>
+                                  </ul>
+                                </div>
+                                <div class="card__image-footer">
+                                  <!-- <figure>
+                                                      <img src="images/80x80.jpg" alt=""
+                                                          class="img-fluid rounded-circle">
+                                                  </figure>
+                                                  <ul class="list-inline my-auto">
+                                                      <li class="list-inline-item">
+                                                          <a href="#">
+                                                              tom wilson <br>
+                                                          </a>
+              
+                                                      </li>
+              
+                                                  </ul>-->
+                                  <ul class="list-inline my-auto ml-auto">
+                                    <li class="list-inline-item">
+                                      <h6>25.000.000 Fcfa</h6>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-md-6 grilleVersion2">
+                              <!-- THREE -->
+                              <div class="card__image card__box">
+                                <div class="card__image-header h-250">
+                                  <div class="ribbon text-capitalize">Bail</div>
+                                  <img src="../../../../content/assets/images/1.jpg" alt="" class="img-fluid w100 img-transition" />
+                                  <div class="info">à vendre</div>
+                                </div>
+                                <div class="card__image-body">
+                                  <span class="badge badge-primary text-capitalize mb-2">maison</span>
+                                  <h6 class="text-capitalize">maison famillale sur la N1</h6>
+
+                                  <p class="text-capitalize">
+                                    <i class="fa fa-map-marker"></i>
+                                    Commune de Sébikhotane, Arrondissement de Diamniadio, Région de Dakar, Sénégal
+                                  </p>
+                                  <ul class="list-inline card__content">
+                                    <li class="list-inline-item">
+                                      <span>
+                                        douche <br />
+                                        <i class="fa fa-bath"></i> 2
+                                      </span>
+                                    </li>
+                                    <li class="list-inline-item">
+                                      <span>
+                                        pièce <br />
+                                        <i class="fa fa-bed"></i> 5
+                                      </span>
+                                    </li>
+                                    <li class="list-inline-item">
+                                      <span>
+                                        garage <br />
+                                        <i class="fa fa-inbox"></i> 1
+                                      </span>
+                                    </li>
+                                    <li class="list-inline-item">
+                                      <span>
+                                        superficie <br />
+                                        <i class="fa fa-map"></i> 4300 m<sup>2</sup>
+                                      </span>
+                                    </li>
+                                  </ul>
+                                </div>
+                                <div class="card__image-footer">
+                                  <!-- <figure>
+                                                      <img src="images/80x80.jpg" alt=""
+                                                          class="img-fluid rounded-circle">
+                                                  </figure>
+                                                  <ul class="list-inline my-auto">
+                                                      <li class="list-inline-item">
+                                                          <a href="#">
+                                                              tom wilson <br>
+                                                          </a>
+              
+                                                      </li>
+              
+                                                  </ul>-->
+                                  <ul class="list-inline my-auto ml-auto">
+                                    <li class="list-inline-item">
+                                      <h6>25.000.000 Fcfa</h6>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-md-6 grilleVersion2">
+                              <div class="card__image card__box">
+                                <div class="card__image-header h-250">
+                                  <div class="ribbon text-capitalize">Bail</div>
+                                  <img src="../../../../content/assets/images/1.jpg" alt="" class="img-fluid w100 img-transition" />
+                                  <div class="info">à vendre</div>
+                                </div>
+                                <div class="card__image-body">
+                                  <span class="badge badge-primary text-capitalize mb-2">maison</span>
+                                  <h6 class="text-capitalize">maison famillale sur la N1</h6>
+
+                                  <p class="text-capitalize">
+                                    <i class="fa fa-map-marker"></i>
+                                    Commune de Sébikhotane, Arrondissement de Diamniadio, Région de Dakar, Sénégal
+                                  </p>
+                                  <ul class="list-inline card__content">
+                                    <li class="list-inline-item">
+                                      <span>
+                                        douche <br />
+                                        <i class="fa fa-bath"></i> 2
+                                      </span>
+                                    </li>
+                                    <li class="list-inline-item">
+                                      <span>
+                                        pièce <br />
+                                        <i class="fa fa-bed"></i> 5
+                                      </span>
+                                    </li>
+                                    <li class="list-inline-item">
+                                      <span>
+                                        garage <br />
+                                        <i class="fa fa-inbox"></i> 1
+                                      </span>
+                                    </li>
+                                    <li class="list-inline-item">
+                                      <span>
+                                        superficie <br />
+                                        <i class="fa fa-map"></i> 4300 m<sup>2</sup>
+                                      </span>
+                                    </li>
+                                  </ul>
+                                </div>
+                                <div class="card__image-footer">
+                                  <!-- <figure>
+                                                      <img src="images/80x80.jpg" alt=""
+                                                          class="img-fluid rounded-circle">
+                                                  </figure>
+                                                  <ul class="list-inline my-auto">
+                                                      <li class="list-inline-item">
+                                                          <a href="#">
+                                                              tom wilson <br>
+                                                          </a>
+              
+                                                      </li>
+              
+                                                  </ul>-->
+                                  <ul class="list-inline my-auto ml-auto">
+                                    <li class="list-inline-item">
+                                      <h6>25.000.000 Fcfa</h6>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-md-6 grilleVersion2">
+                              <div class="card__image card__box">
+                                <div class="card__image-header h-250">
+                                  <div class="ribbon text-capitalize">Bail</div>
+                                  <img src="../../../../content/assets/images/1.jpg" alt="" class="img-fluid w100 img-transition" />
+                                  <div class="info">à vendre</div>
+                                </div>
+                                <div class="card__image-body">
+                                  <span class="badge badge-primary text-capitalize mb-2">maison</span>
+                                  <h6 class="text-capitalize">maison famillale sur la N1</h6>
+
+                                  <p class="text-capitalize">
+                                    <i class="fa fa-map-marker"></i>
+                                    Commune de Sébikhotane, Arrondissement de Diamniadio, Région de Dakar, Sénégal
+                                  </p>
+                                  <ul class="list-inline card__content">
+                                    <li class="list-inline-item">
+                                      <span>
+                                        douche <br />
+                                        <i class="fa fa-bath"></i> 2
+                                      </span>
+                                    </li>
+                                    <li class="list-inline-item">
+                                      <span>
+                                        pièce <br />
+                                        <i class="fa fa-bed"></i> 5
+                                      </span>
+                                    </li>
+                                    <li class="list-inline-item">
+                                      <span>
+                                        garage <br />
+                                        <i class="fa fa-inbox"></i> 1
+                                      </span>
+                                    </li>
+                                    <li class="list-inline-item">
+                                      <span>
+                                        superficie <br />
+                                        <i class="fa fa-map"></i> 4300 m<sup>2</sup>
+                                      </span>
+                                    </li>
+                                  </ul>
+                                </div>
+                                <div class="card__image-footer">
+                                  <!-- <figure>
+                                                      <img src="images/80x80.jpg" alt=""
+                                                          class="img-fluid rounded-circle">
+                                                  </figure>
+                                                  <ul class="list-inline my-auto">
+                                                      <li class="list-inline-item">
+                                                          <a href="#">
+                                                              tom wilson <br>
+                                                          </a>
+              
+                                                      </li>
+              
+                                                  </ul>-->
+                                  <ul class="list-inline my-auto ml-auto">
+                                    <li class="list-inline-item">
+                                      <h6>25.000.000 Fcfa</h6>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="cleafix"></div>
+                        </div>
+                      </div>
+                      <!-- END FILTER VERTICAL -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- END LISTING LIST -->
+      </div>
+    </div>
+  </div>
+</div>
+<!-- END MAPS -->

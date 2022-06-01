@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!--
+        Added the entity Propriete.
+    -->
+    <changeSet id="20220531033502-1" author="jhipster">
+        <createTable tableName="propriete">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="reference" type="varchar(255)">
+                <constraints nullable="true" unique="true" uniqueConstraintName="ux_propriete__reference" />
+            </column>
+            <column name="type" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="mode_de_transaction" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="etat" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="description" type="${clobType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="prix" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="adresse" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="adresse_tronque" type="varchar(80)">
+                <constraints nullable="true" />
+            </column>
+            <column name="latitude" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="longitude" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="superficie" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="annee_de_construction" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="nombre_de_pieces" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="nombre_de_douches" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="nombre_de_garages" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="mode_de_paiement" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="papier" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="acce_eelectricite" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="acces_eau" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="acces_adsl" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="meuble" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="en_promo" type="date">
+                <constraints nullable="true" />
+            </column>
+            <column name="periode" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="distance_primaire" type="double">
+                <constraints nullable="true" />
+            </column>
+            <column name="distance_secondaire" type="double">
+                <constraints nullable="true" />
+            </column>
+            <column name="distance_lycee" type="double">
+                <constraints nullable="true" />
+            </column>
+            <column name="distancehopital" type="double">
+                <constraints nullable="true" />
+            </column>
+            <column name="distanceclinique" type="double">
+                <constraints nullable="true" />
+            </column>
+            <column name="url_photo_principale" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="url_photo_1" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="url_photo_2" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="url_photo_3" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="url_photo_4" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="url_photo_5" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="url_photo_6" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="url_video" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
+        </createTable>
+    </changeSet>
+
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
+
+    <!--
+        Load sample data generated with Faker.js
+        - This data can be easily edited using a CSV editor (or even MS Excel) and
+          is located in the 'src/main/resources/config/liquibase/fake-data' directory
+        - By default this data is applied when running with the JHipster 'dev' profile.
+          This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
+          Spring Boot configuration key.
+    -->
+    <changeSet id="20220531033502-1-data" author="jhipster" context="faker">
+        <loadData
+                  file="config/liquibase/fake-data/propriete.csv"
+                  separator=";"
+                  tableName="propriete"
+                  usePreparedStatements="true">
+            <column name="id" type="numeric"/>
+            <column name="reference" type="string"/>
+            <column name="type" type="string"/>
+            <column name="mode_de_transaction" type="string"/>
+            <column name="etat" type="string"/>
+            <column name="description" type="clob"/>
+            <column name="prix" type="numeric"/>
+            <column name="adresse" type="string"/>
+            <column name="adresse_tronque" type="string"/>
+            <column name="latitude" type="numeric"/>
+            <column name="longitude" type="numeric"/>
+            <column name="superficie" type="numeric"/>
+            <column name="annee_de_construction" type="numeric"/>
+            <column name="nombre_de_pieces" type="numeric"/>
+            <column name="nombre_de_douches" type="numeric"/>
+            <column name="nombre_de_garages" type="numeric"/>
+            <column name="mode_de_paiement" type="string"/>
+            <column name="papier" type="string"/>
+            <column name="acce_eelectricite" type="boolean"/>
+            <column name="acces_eau" type="boolean"/>
+            <column name="acces_adsl" type="boolean"/>
+            <column name="meuble" type="boolean"/>
+            <column name="en_promo" type="date"/>
+            <column name="periode" type="string"/>
+            <column name="distance_primaire" type="numeric"/>
+            <column name="distance_secondaire" type="numeric"/>
+            <column name="distance_lycee" type="numeric"/>
+            <column name="distancehopital" type="numeric"/>
+            <column name="distanceclinique" type="numeric"/>
+            <column name="url_photo_principale" type="string"/>
+            <column name="url_photo_1" type="string"/>
+            <column name="url_photo_2" type="string"/>
+            <column name="url_photo_3" type="string"/>
+            <column name="url_photo_4" type="string"/>
+            <column name="url_photo_5" type="string"/>
+            <column name="url_photo_6" type="string"/>
+            <column name="url_video" type="string"/>
+            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
+        </loadData>
+    </changeSet>
+</databaseChangeLog>

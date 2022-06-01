@@ -1,0 +1,15 @@
+{
+  "applications": "*",
+  "changelogDate": "20220531145053",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "contact",
+  "fields": [],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Contact",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "no"
+}

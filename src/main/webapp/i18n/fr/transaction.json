@@ -1,0 +1,9 @@
+{
+  "buntuApp": {
+    "Transaction": {
+      "null": "",
+      "VENDRE": "VENDRE",
+      "LOCATION": "LOCATION"
+    }
+  }
+}

@@ -1,4 +1,4 @@
-<nav data-cy="navbar" class="navbar navbar-dark navbar-expand-md bg-dark">
+<nav data-cy="navbar" class="navbar navbar-dark navbar-expand-md bg-dark" *ngIf="true">
   <div class="container-fluid">
     <a class="navbar-brand logo" routerLink="/" (click)="collapseNavbar()">
       <span class="logo-img"></span>
@@ -43,6 +43,54 @@
             </span>
           </a>
           <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="entity-menu">
+            <li>
+              <a
+                class="dropdown-item"
+                routerLink="recherche"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+                (click)="collapseNavbar()"
+              >
+                <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+                <span jhiTranslate="global.menu.entities.recherche">Recherche</span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                routerLink="contact"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+                (click)="collapseNavbar()"
+              >
+                <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+                <span jhiTranslate="global.menu.entities.contact">Contact</span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                routerLink="apropos"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+                (click)="collapseNavbar()"
+              >
+                <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+                <span jhiTranslate="global.menu.entities.apropos">Apropos</span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                routerLink="propriete"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+                (click)="collapseNavbar()"
+              >
+                <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+                <span jhiTranslate="global.menu.entities.propriete">Propriete</span>
+              </a>
+            </li>
             <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
           </ul>
         </li>
@@ -190,3 +238,378 @@
     </div>
   </div>
 </nav>
+
+<!-- NAVBAR TOP -->
+<div class="topbar d-none d-sm-block">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12 col-md-10">
+        <div class="row align-items-center">
+          <div class="col-lg-9" style="text-align: center">
+            <h2 class="text-uppercase text-white">TEXTE POUR METTRE EN CONFIANCE LE CLIENT</h2>
+            <p class="text-capitalize text-white">
+              du text encore du texte et toujours du texte du text encore du texte et toujours du texte
+            </p>
+          </div>
+          <div class="col-lg-3">
+            <a href="#" class="btn btn-light text-uppercase" id="testerbtn"
+              >en savoir plus <i class="fa fa-angle-right ml-3 arrow-btn"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-2">
+        <div class="list-unstyled topbar-right">
+          <ul class="topbar-sosmed">
+            <li>
+              <a href="#"><i class="fa fa-facebook"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fa fa-twitter"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fa fa-instagram"></i></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- END NAVBAR TOP -->
+
+<div [ngSwitch]="isHome()">
+  <div *ngSwitchCase="true">
+    <!-- at home page -->
+    <!-- HEADER -->
+    <header class="jumbotron bg-theme">
+      <div class="bg-overlay"></div>
+      <!-- NAVBAR -->
+      <nav class="navbar navbar-hover navbar-expand-lg navbar-soft navbar-transparent">
+        <div class="container">
+          <a class="navbar-brand" href="/">
+            <img src="../../../content/assets/images/logo-blue.png" alt="" />
+            <img src="../../../content/assets/images/logo-blue-stiky.png" alt="" />
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav99">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="main_nav99">
+            <ul class="navbar-nav mx-auto">
+              <li class="nav-item dropdown">
+                <a class="nav-link active dropdown-toggle" href="#" data-toggle="dropdown"> Acheter </a>
+                <ul class="dropdown-menu dropdown-menu-left animate fade-up">
+                  <li><a class="dropdown-item" href="/homepage-v1.html"> Home version one </a></li>
+                  <li><a class="dropdown-item" href="homepage-v2.html"> Home version two </a></li>
+                  <li><a class="dropdown-item" href="/homepage-v3.html"> Home version three </a></li>
+                  <li><a class="dropdown-item" href="/homepage-v4.html"> Home version four </a></li>
+                  <li><a class="dropdown-item" href="/homepage-v5.html"> Home version five </a></li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"> Louer </a>
+                <ul class="dropdown-menu animate fade-up">
+                  <li>
+                    <a class="dropdown-item icon-arrow" href="#"> Property Listing </a>
+                    <ul class="submenu dropdown-menu animate fade-up">
+                      <li><a class="dropdown-item" href="/listing-style-v1.html"> Style 1</a></li>
+                      <li><a class="dropdown-item" href="/listing-style-v2.html"> Style 2</a></li>
+                      <li><a class="dropdown-item" href="/listing-style-v3.html"> Style 3</a></li>
+                      <li><a class="dropdown-item" href="/listing-style-v4.html"> Style 4</a></li>
+                      <li><a class="dropdown-item" href="/listing-style-v5.html"> Style 5</a></li>
+
+                      <li>
+                        <a class="dropdown-item icon-arrow" href="">Submenu item 3 </a>
+                        <ul class="submenu dropdown-menu animate fade-up">
+                          <li><a class="dropdown-item" href="">Multi level 1</a></li>
+                          <li><a class="dropdown-item" href="">Multi level 2</a></li>
+                        </ul>
+                      </li>
+                      <li><a class="dropdown-item" href="">Submenu item 4</a></li>
+                      <li><a class="dropdown-item" href="">Submenu item 5</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a class="dropdown-item icon-arrow" href="#"> Property single detail </a>
+                    <ul class="submenu dropdown-menu animate fade-up">
+                      <li><a class="dropdown-item" href="/single-detail-v1.html">Style 1</a></li>
+                      <li><a class="dropdown-item" href="/single-detail-v2.html">Style 2</a></li>
+                      <li><a class="dropdown-item" href="/single-detail-v3.html">Style 3</a></li>
+                      <li><a class="dropdown-item" href="/single-detail-v4.html">Style 4</a></li>
+                      <li><a class="dropdown-item" href="/single-detail-v5.html">Style 5</a></li>
+                    </ul>
+                  </li>
+
+                  <li>
+                    <a class="dropdown-item icon-arrow" href="#"> Agent </a>
+                    <ul class="submenu dropdown-menu animate fade-up">
+                      <li><a class="dropdown-item" href="/agents-v1.html">Style 1</a></li>
+                      <li><a class="dropdown-item" href="/agents-v2.html">Style 2</a></li>
+                      <li><a class="dropdown-item" href="/agents-detail.html">Agent detail</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a class="dropdown-item icon-arrow" href="#"> Agency </a>
+                    <ul class="submenu dropdown-menu animate fade-up">
+                      <li><a class="dropdown-item" href="/agency-v1.html">Style 1</a></li>
+                      <li><a class="dropdown-item" href="/agency-v2.html">Style 2</a></li>
+                      <li><a class="dropdown-item" href="/agency-detail.html">Agency detail</a></li>
+                    </ul>
+                  </li>
+                  <li><a class="dropdown-item" href="/about-us.html">About us </a></li>
+                  <li><a class="dropdown-item" href="/login.html">Login </a></li>
+                  <li><a class="dropdown-item" href="/register.html"> Register </a></li>
+                  <li><a class="dropdown-item" href="/contact.html"> Contact </a></li>
+                  <li><a class="dropdown-item" href="/404.html"> 404 Error </a></li>
+                </ul>
+              </li>
+
+              <!--<li class="nav-item dropdown">
+                  <a class="nav-link active dropdown-toggle" href="#" data-toggle="dropdown"> Blog </a>
+                  <ul class="dropdown-menu dropdown-menu-left animate fade-up">
+                      <li><a class="dropdown-item" href="/blog.html"> Blog </a>
+                      </li>
+                      <li><a class="dropdown-item" href="/blog-single.html"> Blog Single </a></li>
+
+
+                  </ul>
+              </li>-->
+
+              <li class="nav-item"><a class="nav-link" href="/contact.html"> Estimer votre projet </a></li>
+              <li class="nav-item"><a class="nav-link" href="/contact.html"> A propos </a></li>
+            </ul>
+
+            <!-- Search bar.// -->
+            <ul class="navbar-nav">
+              <li>
+                <a href="#" class="btn btn-primary text-capitalize"> <i class="fa fa-envelope mr-1"></i> Contact</a>
+              </li>
+            </ul>
+            <!-- Search content bar.// -->
+            <div class="top-search navigation-shadow">
+              <div class="container">
+                <div class="input-group">
+                  <form action="#">
+                    <div class="row no-gutters mt-3">
+                      <div class="col">
+                        <input
+                          class="form-control border-secondary border-right-0 rounded-0"
+                          type="search"
+                          value=""
+                          placeholder="Search "
+                          id="example-search-input4"
+                        />
+                      </div>
+                      <div class="col-auto">
+                        <a class="btn btn-outline-secondary border-left-0 rounded-0 rounded-right" href="/search-result.html">
+                          <i class="fa fa-search"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <!-- Search content bar.// -->
+          </div>
+          <!-- navbar-collapse.// -->
+        </div>
+      </nav>
+      <!-- END NAVBAR -->
+      <!-- HERO -->
+      <div class="wrap__intro d-flex align-items-md-center">
+        <div class="container">
+          <div class="row align-items-center justify-content-start flex-wrap">
+            <div class="col-md-10 mx-auto">
+              <div class="wrap__intro-heading text-center" data-aos="fade-up">
+                <!-- <h4>the walls property</h4> -->
+                <h1>ENTREZ Y EN TOUTE QUIETUDE</h1>
+                <p>C'est une histoire de confiance</p>
+
+                <!-- SEARCH BAR -->
+                <div class="wrapper__section" id="rechercheLocal">
+                  <div class="wrapper__section__components">
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <!-- <h3 class="section_heading mt-4">Form Search with Categories</h3> -->
+                        <div class="search__container">
+                          <div class="row input-group no-gutters">
+                            <div class="col-sm-12 col-md-5">
+                              <input
+                                autocomplete="off"
+                                type="text"
+                                id="search"
+                                class="auto-search-wrapper form-control"
+                                aria-label="Text input"
+                                placeholder="Commune, Arrondissement ou Region . . . ."
+                              />
+                              <input type="text" id="result" style="display: none" />
+                            </div>
+                            <div class="col-sm-12 col-md-4 input-group">
+                              <select class="select_option form-control" name="select" id="categories">
+                                <option value="tout">Toutes Catégories</option>
+                                <option value="terrain">Terrain</option>
+                                <option value="maison">Maison</option>
+                                <option value="appartement">Appartement</option>
+                                <option value="bureau">Bureau</option>
+                                <option value="chambre">Chambre</option>
+                                <option value="commerce">Local Commercial</option>
+                                <option value="verger">Verger</option>
+                                <option value="hangar">Hangar</option>
+                              </select>
+                            </div>
+                            <div class="col-sm-12 col-md-3 input-group-append">
+                              <button id="rechercher" class="btn btn-primary btn-block" type="submit" (click)="rechercher()">
+                                <i class="fa fa-search"></i> <span class="ml-1 text-uppercase">Rechercher</span>
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- END HERO -->
+    </header>
+    <!-- END HEADER -->
+  </div>
+  <div *ngSwitchCase="false">
+    <!-- pas at home page -->
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-hover navbar-expand-lg navbar-soft">
+      <div class="container">
+        <a class="navbar-brand" href="/">
+          <img src="../../../content/assets/images/logo-blue-stiky.png" alt="" />
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav99">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="main_nav99">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item dropdown">
+              <a class="nav-link active dropdown-toggle" href="#" data-toggle="dropdown"> Acheter </a>
+              <ul class="dropdown-menu dropdown-menu-left animate fade-up">
+                <li><a class="dropdown-item" href="/homepage-v1.html"> Home version one </a></li>
+                <li><a class="dropdown-item" href="homepage-v2.html"> Home version two </a></li>
+                <li><a class="dropdown-item" href="/homepage-v3.html"> Home version three </a></li>
+                <li><a class="dropdown-item" href="/homepage-v4.html"> Home version four </a></li>
+                <li><a class="dropdown-item" href="/homepage-v5.html"> Home version five </a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"> Louer </a>
+              <ul class="dropdown-menu animate fade-up">
+                <li>
+                  <a class="dropdown-item icon-arrow" href="#"> Property Listing </a>
+                  <ul class="submenu dropdown-menu animate fade-up">
+                    <li><a class="dropdown-item" href="/listing-style-v1.html"> Style 1</a></li>
+                    <li><a class="dropdown-item" href="/listing-style-v2.html"> Style 2</a></li>
+                    <li><a class="dropdown-item" href="/listing-style-v3.html"> Style 3</a></li>
+                    <li><a class="dropdown-item" href="/listing-style-v4.html"> Style 4</a></li>
+                    <li><a class="dropdown-item" href="/listing-style-v5.html"> Style 5</a></li>
+
+                    <li>
+                      <a class="dropdown-item icon-arrow" href="">Submenu item 3 </a>
+                      <ul class="submenu dropdown-menu animate fade-up">
+                        <li><a class="dropdown-item" href="">Multi level 1</a></li>
+                        <li><a class="dropdown-item" href="">Multi level 2</a></li>
+                      </ul>
+                    </li>
+                    <li><a class="dropdown-item" href="">Submenu item 4</a></li>
+                    <li><a class="dropdown-item" href="">Submenu item 5</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a class="dropdown-item icon-arrow" href="#"> Property single detail </a>
+                  <ul class="submenu dropdown-menu animate fade-up">
+                    <li><a class="dropdown-item" href="/single-detail-v1.html">Style 1</a></li>
+                    <li><a class="dropdown-item" href="/single-detail-v2.html">Style 2</a></li>
+                    <li><a class="dropdown-item" href="/single-detail-v3.html">Style 3</a></li>
+                    <li><a class="dropdown-item" href="/single-detail-v4.html">Style 4</a></li>
+                    <li><a class="dropdown-item" href="/single-detail-v5.html">Style 5</a></li>
+                  </ul>
+                </li>
+
+                <li>
+                  <a class="dropdown-item icon-arrow" href="#"> Agent </a>
+                  <ul class="submenu dropdown-menu animate fade-up">
+                    <li><a class="dropdown-item" href="/agents-v1.html">Style 1</a></li>
+                    <li><a class="dropdown-item" href="/agents-v2.html">Style 2</a></li>
+                    <li><a class="dropdown-item" href="/agents-detail.html">Agent detail</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a class="dropdown-item icon-arrow" href="#"> Agency </a>
+                  <ul class="submenu dropdown-menu animate fade-up">
+                    <li><a class="dropdown-item" href="/agency-v1.html">Style 1</a></li>
+                    <li><a class="dropdown-item" href="/agency-v2.html">Style 2</a></li>
+                    <li><a class="dropdown-item" href="/agency-detail.html">Agency detail</a></li>
+                  </ul>
+                </li>
+                <li><a class="dropdown-item" href="/about-us.html">About us </a></li>
+                <li><a class="dropdown-item" href="/login.html">Login </a></li>
+                <li><a class="dropdown-item" href="/register.html"> Register </a></li>
+                <li><a class="dropdown-item" href="/contact.html"> Contact </a></li>
+                <li><a class="dropdown-item" href="/404.html"> 404 Error </a></li>
+              </ul>
+            </li>
+
+            <!--<li class="nav-item dropdown">
+				<a class="nav-link active dropdown-toggle" href="#" data-toggle="dropdown"> Blog </a>
+				<ul class="dropdown-menu dropdown-menu-left animate fade-up">
+					<li><a class="dropdown-item" href="/blog.html"> Blog </a>
+					</li>
+					<li><a class="dropdown-item" href="/blog-single.html"> Blog Single </a></li>
+
+
+				</ul>
+			</li>-->
+
+            <li class="nav-item"><a class="nav-link" href="/contact.html"> Estimer votre projet </a></li>
+            <li class="nav-item"><a class="nav-link" href="/contact.html"> A propos </a></li>
+          </ul>
+
+          <!-- Search bar.// -->
+          <ul class="navbar-nav">
+            <li>
+              <a href="#" class="btn btn-primary text-capitalize"> <i class="fa fa-envelope mr-1"></i> Contact</a>
+            </li>
+          </ul>
+          <!-- Search content bar.// -->
+          <div class="top-search navigation-shadow">
+            <div class="container">
+              <div class="input-group">
+                <form action="#">
+                  <div class="row no-gutters mt-3">
+                    <div class="col">
+                      <input
+                        class="form-control border-secondary border-right-0 rounded-0"
+                        type="search"
+                        value=""
+                        placeholder="Search "
+                        id="example-search-input4"
+                      />
+                    </div>
+                    <div class="col-auto">
+                      <a class="btn btn-outline-secondary border-left-0 rounded-0 rounded-right" href="/search-result.html">
+                        <i class="fa fa-search"></i>
+                      </a>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <!-- Search content bar.// -->
+        </div>
+        <!-- navbar-collapse.// -->
+      </div>
+    </nav>
+    <!-- END NAVBAR -->
+  </div>
+</div>

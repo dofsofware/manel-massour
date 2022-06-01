@@ -1,0 +1,410 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-propriete-heading" data-cy="ProprieteCreateUpdateHeading" jhiTranslate="buntuApp.propriete.home.createOrEditLabel">
+        Create or edit a Propriete
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="buntuApp.propriete.reference" for="field_reference">Reference</label>
+          <input type="text" class="form-control" name="reference" id="field_reference" data-cy="reference" formControlName="reference" />
+          <div *ngIf="editForm.get('reference')!.invalid && (editForm.get('reference')!.dirty || editForm.get('reference')!.touched)"></div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="buntuApp.propriete.type" for="field_type">Type</label>
+          <select class="form-control" name="type" formControlName="type" id="field_type" data-cy="type">
+            <option [ngValue]="null">{{ 'buntuApp.TypeDeBien.null' | translate }}</option>
+            <option *ngFor="let typeDeBien of typeDeBienValues" [value]="typeDeBien">
+              {{ 'buntuApp.TypeDeBien.' + typeDeBien | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="buntuApp.propriete.modeDeTransaction" for="field_modeDeTransaction"
+            >Mode De Transaction</label
+          >
+          <select
+            class="form-control"
+            name="modeDeTransaction"
+            formControlName="modeDeTransaction"
+            id="field_modeDeTransaction"
+            data-cy="modeDeTransaction"
+          >
+            <option [ngValue]="null">{{ 'buntuApp.Transaction.null' | translate }}</option>
+            <option *ngFor="let transaction of transactionValues" [value]="transaction">
+              {{ 'buntuApp.Transaction.' + transaction | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="buntuApp.propriete.etat" for="field_etat">Etat</label>
+          <select class="form-control" name="etat" formControlName="etat" id="field_etat" data-cy="etat">
+            <option [ngValue]="null">{{ 'buntuApp.Etat.null' | translate }}</option>
+            <option *ngFor="let etat of etatValues" [value]="etat">{{ 'buntuApp.Etat.' + etat | translate }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="buntuApp.propriete.description" for="field_description">Description</label>
+          <textarea
+            class="form-control"
+            name="description"
+            id="field_description"
+            data-cy="description"
+            formControlName="description"
+          ></textarea>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="buntuApp.propriete.prix" for="field_prix">Prix</label>
+          <input type="number" class="form-control" name="prix" id="field_prix" data-cy="prix" formControlName="prix" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="buntuApp.propriete.adresse" for="field_adresse">Adresse</label>
+          <input type="text" class="form-control" name="adresse" id="field_adresse" data-cy="adresse" formControlName="adresse" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="buntuApp.propriete.adresseTronque" for="field_adresseTronque">Adresse Tronque</label>
+          <input
+            type="text"
+            class="form-control"
+            name="adresseTronque"
+            id="field_adresseTronque"
+            data-cy="adresseTronque"
+            formControlName="adresseTronque"
+          />
+          <div
+            *ngIf="
+              editForm.get('adresseTronque')!.invalid && (editForm.get('adresseTronque')!.dirty || editForm.get('adresseTronque')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('adresseTronque')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 80 }"
+            >
+              This field cannot be longer than 80 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="buntuApp.propriete.latitude" for="field_latitude">Latitude</label>
+          <input type="number" class="form-control" name="latitude" id="field_latitude" data-cy="latitude" formControlName="latitude" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="buntuApp.propriete.longitude" for="field_longitude">Longitude</label>
+          <input type="number" class="form-control" name="longitude" id="field_longitude" data-cy="longitude" formControlName="longitude" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="buntuApp.propriete.superficie" for="field_superficie">Superficie</label>
+          <input
+            type="number"
+            class="form-control"
+            name="superficie"
+            id="field_superficie"
+            data-cy="superficie"
+            formControlName="superficie"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="buntuApp.propriete.anneeDeConstruction" for="field_anneeDeConstruction"
+            >Annee De Construction</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="anneeDeConstruction"
+            id="field_anneeDeConstruction"
+            data-cy="anneeDeConstruction"
+            formControlName="anneeDeConstruction"
+          />
+          <div
+            *ngIf="
+              editForm.get('anneeDeConstruction')!.invalid &&
+              (editForm.get('anneeDeConstruction')!.dirty || editForm.get('anneeDeConstruction')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('anneeDeConstruction')?.errors?.min"
+              jhiTranslate="entity.validation.min"
+              [translateValues]="{ min: 1900 }"
+            >
+              This field should be at least 1900.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('anneeDeConstruction')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="buntuApp.propriete.nombreDePieces" for="field_nombreDePieces">Nombre De Pieces</label>
+          <input
+            type="number"
+            class="form-control"
+            name="nombreDePieces"
+            id="field_nombreDePieces"
+            data-cy="nombreDePieces"
+            formControlName="nombreDePieces"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="buntuApp.propriete.nombreDeDouches" for="field_nombreDeDouches">Nombre De Douches</label>
+          <input
+            type="number"
+            class="form-control"
+            name="nombreDeDouches"
+            id="field_nombreDeDouches"
+            data-cy="nombreDeDouches"
+            formControlName="nombreDeDouches"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="buntuApp.propriete.nombreDeGarages" for="field_nombreDeGarages">Nombre De Garages</label>
+          <input
+            type="number"
+            class="form-control"
+            name="nombreDeGarages"
+            id="field_nombreDeGarages"
+            data-cy="nombreDeGarages"
+            formControlName="nombreDeGarages"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="buntuApp.propriete.modeDePaiement" for="field_modeDePaiement">Mode De Paiement</label>
+          <select
+            class="form-control"
+            name="modeDePaiement"
+            formControlName="modeDePaiement"
+            id="field_modeDePaiement"
+            data-cy="modeDePaiement"
+          >
+            <option [ngValue]="null">{{ 'buntuApp.ModeDePaiement.null' | translate }}</option>
+            <option *ngFor="let modeDePaiement of modeDePaiementValues" [value]="modeDePaiement">
+              {{ 'buntuApp.ModeDePaiement.' + modeDePaiement | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="buntuApp.propriete.papier" for="field_papier">Papier</label>
+          <select class="form-control" name="papier" formControlName="papier" id="field_papier" data-cy="papier">
+            <option [ngValue]="null">{{ 'buntuApp.Papier.null' | translate }}</option>
+            <option *ngFor="let papier of papierValues" [value]="papier">{{ 'buntuApp.Papier.' + papier | translate }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="buntuApp.propriete.acceEelectricite" for="field_acceEelectricite"
+            >Acce Eelectricite</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="acceEelectricite"
+            id="field_acceEelectricite"
+            data-cy="acceEelectricite"
+            formControlName="acceEelectricite"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="buntuApp.propriete.accesEau" for="field_accesEau">Acces Eau</label>
+          <input type="checkbox" class="form-check" name="accesEau" id="field_accesEau" data-cy="accesEau" formControlName="accesEau" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="buntuApp.propriete.accesADSL" for="field_accesADSL">Acces ADSL</label>
+          <input type="checkbox" class="form-check" name="accesADSL" id="field_accesADSL" data-cy="accesADSL" formControlName="accesADSL" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="buntuApp.propriete.meuble" for="field_meuble">Meuble</label>
+          <input type="checkbox" class="form-check" name="meuble" id="field_meuble" data-cy="meuble" formControlName="meuble" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="buntuApp.propriete.enPromo" for="field_enPromo">En Promo</label>
+          <div class="input-group">
+            <input
+              id="field_enPromo"
+              data-cy="enPromo"
+              type="text"
+              class="form-control"
+              name="enPromo"
+              ngbDatepicker
+              #enPromoDp="ngbDatepicker"
+              formControlName="enPromo"
+            />
+            <button type="button" class="btn btn-secondary" (click)="enPromoDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="buntuApp.propriete.periode" for="field_periode">Periode</label>
+          <select class="form-control" name="periode" formControlName="periode" id="field_periode" data-cy="periode">
+            <option [ngValue]="null">{{ 'buntuApp.PeriodeDePaiement.null' | translate }}</option>
+            <option *ngFor="let periodeDePaiement of periodeDePaiementValues" [value]="periodeDePaiement">
+              {{ 'buntuApp.PeriodeDePaiement.' + periodeDePaiement | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="buntuApp.propriete.distancePrimaire" for="field_distancePrimaire"
+            >Distance Primaire</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="distancePrimaire"
+            id="field_distancePrimaire"
+            data-cy="distancePrimaire"
+            formControlName="distancePrimaire"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="buntuApp.propriete.distanceSecondaire" for="field_distanceSecondaire"
+            >Distance Secondaire</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="distanceSecondaire"
+            id="field_distanceSecondaire"
+            data-cy="distanceSecondaire"
+            formControlName="distanceSecondaire"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="buntuApp.propriete.distanceLycee" for="field_distanceLycee">Distance Lycee</label>
+          <input
+            type="number"
+            class="form-control"
+            name="distanceLycee"
+            id="field_distanceLycee"
+            data-cy="distanceLycee"
+            formControlName="distanceLycee"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="buntuApp.propriete.distancehopital" for="field_distancehopital">Distancehopital</label>
+          <input
+            type="number"
+            class="form-control"
+            name="distancehopital"
+            id="field_distancehopital"
+            data-cy="distancehopital"
+            formControlName="distancehopital"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="buntuApp.propriete.distanceclinique" for="field_distanceclinique">Distanceclinique</label>
+          <input
+            type="number"
+            class="form-control"
+            name="distanceclinique"
+            id="field_distanceclinique"
+            data-cy="distanceclinique"
+            formControlName="distanceclinique"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="buntuApp.propriete.urlPhotoPrincipale" for="field_urlPhotoPrincipale"
+            >Url Photo Principale</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="urlPhotoPrincipale"
+            id="field_urlPhotoPrincipale"
+            data-cy="urlPhotoPrincipale"
+            formControlName="urlPhotoPrincipale"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="buntuApp.propriete.urlPhoto1" for="field_urlPhoto1">Url Photo 1</label>
+          <input type="text" class="form-control" name="urlPhoto1" id="field_urlPhoto1" data-cy="urlPhoto1" formControlName="urlPhoto1" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="buntuApp.propriete.urlPhoto2" for="field_urlPhoto2">Url Photo 2</label>
+          <input type="text" class="form-control" name="urlPhoto2" id="field_urlPhoto2" data-cy="urlPhoto2" formControlName="urlPhoto2" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="buntuApp.propriete.urlPhoto3" for="field_urlPhoto3">Url Photo 3</label>
+          <input type="text" class="form-control" name="urlPhoto3" id="field_urlPhoto3" data-cy="urlPhoto3" formControlName="urlPhoto3" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="buntuApp.propriete.urlPhoto4" for="field_urlPhoto4">Url Photo 4</label>
+          <input type="text" class="form-control" name="urlPhoto4" id="field_urlPhoto4" data-cy="urlPhoto4" formControlName="urlPhoto4" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="buntuApp.propriete.urlPhoto5" for="field_urlPhoto5">Url Photo 5</label>
+          <input type="text" class="form-control" name="urlPhoto5" id="field_urlPhoto5" data-cy="urlPhoto5" formControlName="urlPhoto5" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="buntuApp.propriete.urlPhoto6" for="field_urlPhoto6">Url Photo 6</label>
+          <input type="text" class="form-control" name="urlPhoto6" id="field_urlPhoto6" data-cy="urlPhoto6" formControlName="urlPhoto6" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="buntuApp.propriete.urlVideo" for="field_urlVideo">Url Video</label>
+          <input type="text" class="form-control" name="urlVideo" id="field_urlVideo" data-cy="urlVideo" formControlName="urlVideo" />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

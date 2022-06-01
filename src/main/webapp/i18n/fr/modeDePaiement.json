@@ -1,0 +1,9 @@
+{
+  "buntuApp": {
+    "ModeDePaiement": {
+      "null": "",
+      "COMPTANT": "COMPTANT",
+      "MORATOIRE": "MORATOIRE"
+    }
+  }
+}

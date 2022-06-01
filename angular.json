@@ -35,8 +35,17 @@
               "src/main/webapp/manifest.webapp",
               "src/main/webapp/robots.txt"
             ],
-            "styles": ["src/main/webapp/content/scss/vendor.scss", "src/main/webapp/content/scss/global.scss"],
-            "scripts": []
+            "styles": [
+              "node_modules/leaflet/dist/leaflet.css",
+              "./src/main/webapp/content/assets/css/customCss.css",
+              "./src/main/webapp/content/assets/css/styles.css"
+            ],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "./src/main/webapp/content/assets/js/index.bundle.js",
+              "./src/main/webapp/content/assets/js/customJs.js",
+              "./src/main/webapp/content/assets/js/autocompilation.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -53,7 +62,7 @@
                 {
                   "type": "initial",
                   "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumError": "5mb"
                 },
                 {
                   "type": "anyComponentStyle",

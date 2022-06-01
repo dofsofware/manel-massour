@@ -1,0 +1,11 @@
+{
+  "buntuApp": {
+    "PeriodeDePaiement": {
+      "null": "",
+      "JOUR": "JOUR",
+      "SEMAINE": "SEMAINE",
+      "MOIS": "MOIS",
+      "ANNEE": "ANNEE"
+    }
+  }
+}

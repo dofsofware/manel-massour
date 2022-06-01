@@ -1,0 +1,9 @@
+{
+  "buntuApp": {
+    "Etat": {
+      "null": "",
+      "NEUF": "NEUF",
+      "OCCASION": "OCCASION"
+    }
+  }
+}

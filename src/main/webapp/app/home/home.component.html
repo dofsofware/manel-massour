@@ -1,78 +1,678 @@
-<div class="row">
-  <div class="col-md-3">
-    <span class="hipster img-fluid rounded"></span>
-  </div>
-
-  <div class="col-md-9">
-    <h1 class="display-4"><span jhiTranslate="home.title">Welcome, Java Hipster!</span> (Buntu)</h1>
-
-    <p class="lead" jhiTranslate="home.subtitle">This is your homepage</p>
-
-    <div [ngSwitch]="account !== null">
-      <div class="alert alert-success" *ngSwitchCase="true">
-        <span id="home-logged-message" *ngIf="account" jhiTranslate="home.logged.message" [translateValues]="{ username: account.login }"
-          >You are logged in as user "{{ account.login }}".</span
-        >
+<!-- FAITES AFFAIRE -->
+<section class="featured__property">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-lg-6 mx-auto">
+        <div class="title__head">
+          <h2 class="text-center text-capitalize">faites affaire</h2>
+          <p class="text-center text-capitalize">nous avons trouver les meilleurs propositions du marché pour vous</p>
+        </div>
       </div>
+      <div class="clearfix"></div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="featured__property-carousel owl-carousel">
+          <div class="item">
+            <!-- 1 -->
+            <div class="card__image card__box">
+              <div class="card__image-header h-250">
+                <div class="ribbon text-capitalize">Bail</div>
+                <img src="../../content/assets/images/1.jpg" alt="" class="img-fluid w100 img-transition" />
+                <div class="info">à vendre</div>
+              </div>
+              <div class="card__image-body">
+                <span class="badge badge-primary text-capitalize mb-2">maison</span>
+                <h6 class="text-capitalize">maison famillale sur la N1</h6>
 
-      <div class="alert alert-warning" *ngSwitchCase="false">
-        <span jhiTranslate="global.messages.info.authenticated.prefix">If you want to </span>
-        <a class="alert-link" (click)="login()" jhiTranslate="global.messages.info.authenticated.link">sign in</a
-        ><span jhiTranslate="global.messages.info.authenticated.suffix"
-          >, you can try the default accounts:<br />- Administrator (login="admin" and password="admin") <br />- User (login="user" and
-          password="user").</span
-        >
-      </div>
+                <p class="text-capitalize">
+                  <i class="fa fa-map-marker"></i>
+                  Commune de Sébikhotane, Arrondissement de Diamniadio, Région de Dakar, Sénégal
+                </p>
+                <ul class="list-inline card__content">
+                  <li class="list-inline-item">
+                    <span>
+                      douche <br />
+                      <i class="fa fa-bath"></i> 2
+                    </span>
+                  </li>
+                  <li class="list-inline-item">
+                    <span>
+                      pièce <br />
+                      <i class="fa fa-bed"></i> 5
+                    </span>
+                  </li>
+                  <li class="list-inline-item">
+                    <span>
+                      garage <br />
+                      <i class="fa fa-inbox"></i> 1
+                    </span>
+                  </li>
+                  <li class="list-inline-item">
+                    <span>
+                      superficie <br />
+                      <i class="fa fa-map"></i> 4300 m<sup>2</sup>
+                    </span>
+                  </li>
+                </ul>
+              </div>
+              <div class="card__image-footer">
+                <!-- <figure>
+                                      <img src="../../content/assets/images/80x80.jpg" alt=""
+                                          class="img-fluid rounded-circle">
+                                  </figure>
+                                  <ul class="list-inline my-auto">
+                                      <li class="list-inline-item">
+                                          <a href="#">
+                                              tom wilson <br>
+                                          </a>
 
-      <div class="alert alert-warning" *ngSwitchCase="false">
-        <span jhiTranslate="global.messages.info.register.noaccount">You don't have an account yet?</span>&nbsp;
-        <a class="alert-link" routerLink="account/register" jhiTranslate="global.messages.info.register.link">Register a new account</a>
+                                      </li>
+
+                                  </ul>-->
+                <ul class="list-inline my-auto ml-auto">
+                  <li class="list-inline-item">
+                    <h6>25.000.000 Fcfa</h6>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <!-- 2 -->
+            <div class="card__image card__box">
+              <div class="card__image-header h-250">
+                <!--    <div class="ribbon text-capitalize">featured</div>-->
+                <img src="../../content/assets/images/2.jpg" alt="" class="img-fluid w100 img-transition" />
+                <div class="info">à louer</div>
+              </div>
+              <div class="card__image-body">
+                <span class="badge badge-primary text-capitalize mb-2">appartement</span>
+                <h6 class="text-capitalize">T1 bis</h6>
+
+                <p class="text-capitalize">
+                  <i class="fa fa-map-marker"></i>
+                  Commune de Ngor, Arrondissement des Almadies, Dakar, Région de Dakar, Sénégal
+                </p>
+                <ul class="list-inline card__content">
+                  <li class="list-inline-item">
+                    <span>
+                      douche <br />
+                      <i class="fa fa-bath"></i> 1
+                    </span>
+                  </li>
+                  <li class="list-inline-item">
+                    <span>
+                      pièce <br />
+                      <i class="fa fa-bed"></i> 3
+                    </span>
+                  </li>
+                  <li class="list-inline-item" style="display: none">
+                    <span>
+                      garage <br />
+                      <i class="fa fa-inbox"></i> 1
+                    </span>
+                  </li>
+                  <li class="list-inline-item">
+                    <span>
+                      superficie <br />
+                      <i class="fa fa-map"></i> 38 m<sup>2</sup>
+                    </span>
+                  </li>
+                </ul>
+              </div>
+              <div class="card__image-footer">
+                <!-- <figure>
+                                      <img src="../../content/assets/images/80x80.jpg" alt=""
+                                          class="img-fluid rounded-circle">
+                                  </figure>
+                                  <ul class="list-inline my-auto">
+                                      <li class="list-inline-item">
+                                          <a href="#">
+                                              tom wilson <br>
+                                          </a>
+
+                                      </li>
+
+                                  </ul>-->
+                <ul class="list-inline my-auto ml-auto">
+                  <li class="list-inline-item">
+                    <h6>50.000 Fcfa / semaine</h6>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <!-- 3 -->
+            <div class="card__image card__box">
+              <div class="card__image-header h-250">
+                <div class="ribbon text-capitalize">titre foncier</div>
+                <img src="../../content/assets/images/3.jpg" alt="" class="img-fluid w100 img-transition" />
+                <div class="info">à vendre</div>
+              </div>
+              <div class="card__image-body">
+                <span class="badge badge-primary text-capitalize mb-2">terrain</span>
+                <h6 class="text-capitalize">terrain viabilisé</h6>
+
+                <p class="text-capitalize troque">
+                  <i class="fa fa-map-marker"></i>
+                  Mermoz-Sacré-Cœur, Arrondissement des Almadies, Dakar, Région de Dakar, 25013, Sénégal
+                </p>
+                <ul class="list-inline card__content">
+                  <li class="list-inline-item" style="display: none">
+                    <span>
+                      douche <br />
+                      <i class="fa fa-bath"></i> 2
+                    </span>
+                  </li>
+                  <li class="list-inline-item" style="display: none">
+                    <span>
+                      pièce <br />
+                      <i class="fa fa-bed"></i> 5
+                    </span>
+                  </li>
+                  <li class="list-inline-item" style="display: none">
+                    <span>
+                      garage <br />
+                      <i class="fa fa-inbox"></i> 1
+                    </span>
+                  </li>
+                  <li class="list-inline-item">
+                    <span>
+                      superficie <br />
+                      <i class="fa fa-map"></i> 300 m<sup>2</sup>
+                    </span>
+                  </li>
+                </ul>
+              </div>
+              <div class="card__image-footer">
+                <!-- <figure>
+                                      <img src="../../content/assets/images/80x80.jpg" alt=""
+                                          class="img-fluid rounded-circle">
+                                  </figure>
+                                  <ul class="list-inline my-auto">
+                                      <li class="list-inline-item">
+                                          <a href="#">
+                                              tom wilson <br>
+                                          </a>
+
+                                      </li>
+
+                                  </ul>-->
+                <ul class="list-inline my-auto ml-auto">
+                  <li class="list-inline-item">
+                    <h6>5.000.000 Fcfa</h6>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <!-- 4 -->
+            <div class="card__image card__box">
+              <div class="card__image-header h-250">
+                <!--    <div class="ribbon text-capitalize">featured</div>-->
+                <img src="../../content/assets/images/4.jpg" alt="" class="img-fluid w100 img-transition" />
+                <div class="info">à louer</div>
+              </div>
+              <div class="card__image-body">
+                <span class="badge badge-primary text-capitalize mb-2">local commercial</span>
+                <h6 class="text-capitalize">magasin</h6>
+
+                <p class="text-capitalize">
+                  <i class="fa fa-map-marker"></i>
+                  Cité Afriqua sur la corniche ouest, Dakar
+                </p>
+                <ul class="list-inline card__content">
+                  <li class="list-inline-item" style="display: none">
+                    <span>
+                      douche <br />
+                      <i class="fa fa-bath"></i> 2
+                    </span>
+                  </li>
+                  <li class="list-inline-item" style="display: none">
+                    <span>
+                      pièce <br />
+                      <i class="fa fa-bed"></i> 5
+                    </span>
+                  </li>
+                  <li class="list-inline-item" style="display: none">
+                    <span>
+                      garage <br />
+                      <i class="fa fa-inbox"></i> 1
+                    </span>
+                  </li>
+                  <li class="list-inline-item">
+                    <span>
+                      superficie <br />
+                      <i class="fa fa-map"></i> 50 m<sup>2</sup>
+                    </span>
+                  </li>
+                </ul>
+              </div>
+              <div class="card__image-footer">
+                <!-- <figure>
+                                      <img src="../../content/assets/images/80x80.jpg" alt=""
+                                          class="img-fluid rounded-circle">
+                                  </figure>
+                                  <ul class="list-inline my-auto">
+                                      <li class="list-inline-item">
+                                          <a href="#">
+                                              tom wilson <br>
+                                          </a>
+
+                                      </li>
+
+                                  </ul>-->
+                <ul class="list-inline my-auto ml-auto">
+                  <li class="list-inline-item">
+                    <h6>250.000 Fcfa / mois</h6>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <!-- 5 -->
+            <div class="card__image card__box">
+              <div class="card__image-header h-250">
+                <!--    <div class="ribbon text-capitalize">featured</div>-->
+                <img src="../../content/assets/images/5.jpg" alt="" class="img-fluid w100 img-transition" />
+                <div class="info">à louer</div>
+              </div>
+              <div class="card__image-body">
+                <span class="badge badge-primary text-capitalize mb-2">Bureau</span>
+                <h6 class="text-capitalize">grand standing</h6>
+
+                <p class="text-capitalize">
+                  <i class="fa fa-map-marker"></i>
+                  immeuble fayçal, Dakar
+                </p>
+                <ul class="list-inline card__content">
+                  <li class="list-inline-item">
+                    <span>
+                      douche <br />
+                      <i class="fa fa-bath"></i> 3
+                    </span>
+                  </li>
+                  <li class="list-inline-item">
+                    <span>
+                      pièce <br />
+                      <i class="fa fa-bed"></i> 7
+                    </span>
+                  </li>
+                  <li class="list-inline-item">
+                    <span>
+                      garage <br />
+                      <i class="fa fa-inbox"></i> 9
+                    </span>
+                  </li>
+                  <li class="list-inline-item">
+                    <span>
+                      superficie <br />
+                      <i class="fa fa-map"></i> 1200 m<sup>2</sup>
+                    </span>
+                  </li>
+                </ul>
+              </div>
+              <div class="card__image-footer">
+                <!-- <figure>
+                                      <img src="../../content/assets/images/80x80.jpg" alt=""
+                                          class="img-fluid rounded-circle">
+                                  </figure>
+                                  <ul class="list-inline my-auto">
+                                      <li class="list-inline-item">
+                                          <a href="#">
+                                              tom wilson <br>
+                                          </a>
+
+                                      </li>
+
+                                  </ul>-->
+                <ul class="list-inline my-auto ml-auto">
+                  <li class="list-inline-item">
+                    <h6>1.500.000 Fcfa / mois</h6>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <!-- 6 -->
+            <div class="card__image card__box">
+              <div class="card__image-header h-250">
+                <div class="ribbon text-capitalize">délibération</div>
+                <img src="../../content/assets/images/6.jpg" alt="" class="img-fluid w100 img-transition" />
+                <div class="info">à vendre</div>
+              </div>
+              <div class="card__image-body">
+                <span class="badge badge-primary text-capitalize mb-2">verger</span>
+                <h6 class="text-capitalize">sols Dior</h6>
+
+                <p class="text-capitalize">
+                  <i class="fa fa-map-marker"></i>
+                  Kip-Kip à Sébikotane, Dakar
+                </p>
+                <ul class="list-inline card__content">
+                  <li class="list-inline-item" style="display: none">
+                    <span>
+                      douche <br />
+                      <i class="fa fa-bath"></i> 2
+                    </span>
+                  </li>
+                  <li class="list-inline-item" style="display: none">
+                    <span>
+                      pièce <br />
+                      <i class="fa fa-bed"></i> 5
+                    </span>
+                  </li>
+                  <li class="list-inline-item" style="display: none">
+                    <span>
+                      garage <br />
+                      <i class="fa fa-inbox"></i> 1
+                    </span>
+                  </li>
+                  <li class="list-inline-item">
+                    <span>
+                      superficie <br />
+                      <i class="fa fa-map"></i> 2300 m<sup>2</sup>
+                    </span>
+                  </li>
+                </ul>
+              </div>
+              <div class="card__image-footer">
+                <!-- <figure>
+                                      <img src="../../content/assets/images/80x80.jpg" alt=""
+                                          class="img-fluid rounded-circle">
+                                  </figure>
+                                  <ul class="list-inline my-auto">
+                                      <li class="list-inline-item">
+                                          <a href="#">
+                                              tom wilson <br>
+                                          </a>
+
+                                      </li>
+
+                                  </ul>-->
+                <ul class="list-inline my-auto ml-auto">
+                  <li class="list-inline-item">
+                    <h6>173.000.000 Fcfa</h6>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-
-    <p jhiTranslate="home.question">If you have any question on JHipster:</p>
-
-    <ul>
-      <li>
-        <a href="https://www.jhipster.tech/" target="_blank" rel="noopener noreferrer" jhiTranslate="home.link.homepage"
-          >JHipster homepage</a
-        >
-      </li>
-      <li>
-        <a
-          href="https://stackoverflow.com/tags/jhipster/info"
-          target="_blank"
-          rel="noopener noreferrer"
-          jhiTranslate="home.link.stackoverflow"
-          >JHipster on Stack Overflow</a
-        >
-      </li>
-      <li>
-        <a
-          href="https://github.com/jhipster/generator-jhipster/issues?state=open"
-          target="_blank"
-          rel="noopener noreferrer"
-          jhiTranslate="home.link.bugtracker"
-          >JHipster bug tracker</a
-        >
-      </li>
-      <li>
-        <a href="https://gitter.im/jhipster/generator-jhipster" target="_blank" rel="noopener noreferrer" jhiTranslate="home.link.chat"
-          >JHipster public chat room</a
-        >
-      </li>
-      <li>
-        <a href="https://twitter.com/jhipster" target="_blank" rel="noopener noreferrer" jhiTranslate="home.link.follow"
-          >follow @jhipster on Twitter</a
-        >
-      </li>
-    </ul>
-
-    <p>
-      <span jhiTranslate="home.like">If you like JHipster, don't forget to give us a star on</span>
-      <a href="https://github.com/jhipster/generator-jhipster" target="_blank" rel="noopener noreferrer" jhiTranslate="home.github"
-        >GitHub</a
-      >!
-    </p>
   </div>
-</div>
+</section>
+<!-- END FAITES AFFAIRE  -->
+
+<!-- NOS PARTENAIRES -->
+<section class="projects__partner bg-light">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-6">
+        <div class="title__head">
+          <h2 class="text-center text-capitalize">Nos Partenaires</h2>
+          <p class="text-center text-capitalize">
+            (text à modifier ) pour assurer la sécurité de nos clients nous sommes en collaboration avec ...
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="projects__partner-logo">
+          <ul class="list-inline mb-0">
+            <li class="list-inline-item">
+              <img src="../../content/assets/images/partner-logo6.png" alt="" class="img-fluid" />
+            </li>
+            <li class="list-inline-item">
+              <img src="../../content/assets/images/partner-logo7.png" alt="" class="img-fluid" />
+            </li>
+            <li class="list-inline-item">
+              <img src="../../content/assets/images/partner-logo8.png" alt="" class="img-fluid" />
+            </li>
+            <li class="list-inline-item">
+              <img src="../../content/assets/images/partner-logo1.png" alt="" class="img-fluid" />
+            </li>
+            <li class="list-inline-item">
+              <img src="../../content/assets/images/partner-logo5.png" alt="" class="img-fluid" />
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- END NOS PARTENAIRES -->
+
+<!-- DISENT CELA DE NOUS -->
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-lg-6 mx-auto">
+        <div class="title__head">
+          <h2 class="text-center text-capitalize">Ils ont dit celà de nous</h2>
+          <p class="text-center text-capitalize">Témoignages de nos Clients.</p>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+    <div class="testimonial owl-carousel owl-theme">
+      <!-- TESTIMONIAL -->
+      <div class="item testimonial__block">
+        <div class="testimonial__block-card bg-reviews">
+          <p>
+            du texte paragaphe sur 2 lignes .du texte paragaphe sur 2 lignes .du texte paragaphe sur 2 lignes .du texte paragaphe sur 2
+            lignes .
+          </p>
+        </div>
+        <div class="testimonial__block-users">
+          <div class="testimonial__block-users-img">
+            <img src="../../content/assets/images/80x80.jpg" alt="" class="img-fluid" />
+          </div>
+          <div class="testimonial__block-users-name">
+            Djibril Diagne <br />
+            <span>PDG sene keur</span>
+          </div>
+        </div>
+      </div>
+      <!-- END TESTIMONIAL -->
+      <!-- TESTIMONIAL -->
+      <div class="item testimonial__block">
+        <div class="testimonial__block-card bg-reviews">
+          <p>
+            du texte paragaphe sur 2 lignes .du texte paragaphe sur 2 lignes .du texte paragaphe sur 2 lignes .du texte paragaphe sur 2
+            lignes .
+          </p>
+        </div>
+        <div class="testimonial__block-users">
+          <div class="testimonial__block-users-img">
+            <img src="../../content/assets/images/80x80.jpg" alt="" class="img-fluid" />
+          </div>
+          <div class="testimonial__block-users-name">
+            Aissatou ba <br />
+            <span>Secretaire du DG deukouway</span>
+          </div>
+        </div>
+      </div>
+      <!-- END TESTIMONIAL -->
+      <!-- TESTIMONIAL -->
+      <div class="item testimonial__block">
+        <div class="testimonial__block-card bg-reviews">
+          <p>
+            du texte paragaphe sur 2 lignes .du texte paragaphe sur 2 lignes .du texte paragaphe sur 2 lignes .du texte paragaphe sur 2
+            lignes .
+          </p>
+        </div>
+        <div class="testimonial__block-users">
+          <div class="testimonial__block-users-img">
+            <img src="../../content/assets/images/80x80.jpg" alt="" class="img-fluid" />
+          </div>
+          <div class="testimonial__block-users-name">
+            Ablaye Mbaye <br />
+            <span>Entrepreneur </span>
+          </div>
+        </div>
+      </div>
+      <!-- END TESTIMONIAL -->
+      <!-- TESTIMONIAL -->
+      <div class="item testimonial__block">
+        <div class="testimonial__block-card bg-reviews">
+          <p>
+            du texte paragaphe sur 2 lignes .du texte paragaphe sur 2 lignes .du texte paragaphe sur 2 lignes .du texte paragaphe sur 2
+            lignes .
+          </p>
+        </div>
+        <div class="testimonial__block-users">
+          <div class="testimonial__block-users-img">
+            <img src="../../content/assets/images/80x80.jpg" alt="" class="img-fluid" />
+          </div>
+          <div class="testimonial__block-users-name">
+            Ousmane Seck <br />
+            <span>Promoteur </span>
+          </div>
+        </div>
+      </div>
+      <!-- END TESTIMONIAL -->
+    </div>
+  </div>
+</section>
+<!-- END DISENT CELA DE NOUS -->
+
+<!-- Footer  -->
+<footer>
+  <div class="wrapper__footer bg-theme-footer">
+    <div class="container">
+      <div class="row">
+        <!-- ADDRESS -->
+        <div class="col-md-4">
+          <div class="widget__footer">
+            <figure>
+              <img src="../../../content/assets/images/logo-blue.png" alt="" class="logo-footer" />
+            </figure>
+            <p>
+              description de buntu description de buntu description de buntu description de buntu description de buntu description de buntu
+              description de buntu description de buntu description de buntu
+            </p>
+
+            <ul class="list-unstyled mb-0 mt-3">
+              <li>
+                <b> <i class="fa fa-map-marker"></i></b
+                ><span> Commune de Sébikhotane, Arrondissement de Diamniadio, Région de Dakar, Sénégal </span>
+              </li>
+              <li>
+                <b><i class="fa fa-phone-square"></i></b><span>(123) 345-6789</span>
+              </li>
+              <li>
+                <b><i class="fa fa-phone-square"></i></b><span>(+100) 123 456 7890</span>
+              </li>
+              <li>
+                <b><i class="fa fa-headphones"></i></b><span>support@buntu.sn</span>
+              </li>
+              <li>
+                <b><i class="fa fa-clock-o"></i></b><span>Lun - Sam / 9:00 - 17:00</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- END ADDRESS -->
+
+        <!-- QUICK LINKS -->
+        <div class="col-md-4">
+          <div class="widget__footer">
+            <h4 class="footer-title">Accès rapides</h4>
+            <div class="link__category-two-column">
+              <ul class="list-unstyled">
+                <li class="list-inline-item">
+                  <a href="#">Page 1</a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#">Page 2</a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#">Page 3</a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#">Page 4</a>
+                </li>
+
+                <li class="list-inline-item">
+                  <a href="#">Page 5</a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#">Page 6</a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#">Page 7</a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#">Page 8</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- END QUICK LINKS -->
+
+        <!-- NEWSLETTERS -->
+        <div class="col-md-4">
+          <div class="widget__footer">
+            <h4 class="footer-title">Suivez-nous</h4>
+            <p class="mb-2">Suivez-nous et restez en contact pour recevoir les dernières nouvelles</p>
+            <p>
+              <button class="btn btn-social btn-social-o facebook mr-1">
+                <i class="fa fa-facebook-f"></i>
+              </button>
+              <button class="btn btn-social btn-social-o twitter mr-1">
+                <i class="fa fa-twitter"></i>
+              </button>
+
+              <button class="btn btn-social btn-social-o linkedin mr-1">
+                <i class="fa fa-linkedin"></i>
+              </button>
+              <button class="btn btn-social btn-social-o instagram mr-1">
+                <i class="fa fa-instagram"></i>
+              </button>
+
+              <button class="btn btn-social btn-social-o youtube mr-1">
+                <i class="fa fa-youtube"></i>
+              </button>
+            </p>
+            <br />
+            <h4 class="footer-title">newsletter</h4>
+            <!-- Form Newsletter -->
+            <div class="widget__form-newsletter">
+              <p>Ne manquez pas de vous abonner à nos flux d'actualités, veuillez remplir le formulaire ci-dessous</p>
+              <div class="mt-3">
+                <input type="text" class="form-control mb-2" placeholder="Adresse mail" />
+
+                <button class="btn btn-primary btn-block text-capitalize" type="button">S'incrire</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- END NEWSLETTER -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Bottom -->
+  <div class="bg__footer-bottom-v1">
+    <div class="container">
+      <div class="row flex-column-reverse flex-md-row">
+        <div class="col-md-6">
+          <span>
+            © 2022 BUNTU real estate by
+            <a href="https://www.tech-xel.com/" target="_blank">tech xel</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- End Footer  -->

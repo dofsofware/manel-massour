@@ -6,3 +6,5 @@ target/
 build/
 node/
 postcss.config.js
+src/main/webapp/content/assets
+src/main/webapp/service-worker.js

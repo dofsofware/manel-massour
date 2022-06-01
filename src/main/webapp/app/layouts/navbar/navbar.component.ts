@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { SessionStorageService } from 'ngx-webstorage';
-
+import $ from 'jquery';
 import { VERSION } from 'app/app.constants';
 import { LANGUAGES } from 'app/config/language.constants';
 import { Account } from 'app/core/auth/account.model';
@@ -10,13 +10,14 @@ import { AccountService } from 'app/core/auth/account.service';
 import { LoginService } from 'app/login/login.service';
 import { ProfileService } from 'app/layouts/profiles/profile.service';
 import { EntityNavbarItems } from 'app/entities/entity-navbar-items';
+import autoComp from 'content/assets/js/autocompilation';
 
 @Component({
   selector: 'jhi-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, AfterViewInit {
   inProduction?: boolean;
   isNavbarCollapsed = true;
   languages = LANGUAGES;
@@ -36,6 +37,9 @@ export class NavbarComponent implements OnInit {
     if (VERSION) {
       this.version = VERSION.toLowerCase().startsWith('v') ? VERSION : `v${VERSION}`;
     }
+  }
+  ngAfterViewInit(): void {
+    autoComp();
   }
 
   ngOnInit(): void {
@@ -63,6 +67,17 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
+  rechercher(): void {
+    if ($('#result').val()) {
+      window.location.href = encodeURI(`${String($('#result').val())}&categories=${String($('#categories').val())}`);
+    } else {
+      const getUrl = window.location;
+      const baseUrl = getUrl.protocol + '//' + getUrl.host + '/';
+      const monurl = baseUrl + 'recherche';
+      window.location.href = monurl;
+    }
+  }
+
   logout(): void {
     this.collapseNavbar();
     this.loginService.logout();
@@ -71,5 +86,12 @@ export class NavbarComponent implements OnInit {
 
   toggleNavbar(): void {
     this.isNavbarCollapsed = !this.isNavbarCollapsed;
+  }
+  isHome(): boolean {
+    if (this.router.url === '/') {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

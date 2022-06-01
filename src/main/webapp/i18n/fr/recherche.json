@@ -1,0 +1,23 @@
+{
+  "buntuApp": {
+    "recherche": {
+      "home": {
+        "title": "Recherches",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Recherche",
+        "createOrEditLabel": "Créer ou éditer un Recherche",
+        "notFound": "Aucun Recherche trouvé"
+      },
+      "created": "Un nouveau Recherche a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Recherche avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Recherche avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Recherche {{ id }} ?"
+      },
+      "detail": {
+        "title": "Recherche"
+      },
+      "id": "ID"
+    }
+  }
+}

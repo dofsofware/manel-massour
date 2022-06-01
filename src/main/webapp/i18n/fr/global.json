@@ -7,6 +7,10 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entités",
+        "recherche": "Recherche",
+        "contact": "Contact",
+        "apropos": "Apropos",
+        "propriete": "Propriete",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

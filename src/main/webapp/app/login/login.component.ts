@@ -1,9 +1,9 @@
 import { Component, ViewChild, OnInit, AfterViewInit, ElementRef } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-
 import { LoginService } from 'app/login/login.service';
 import { AccountService } from 'app/core/auth/account.service';
+import initJs from 'content/assets/js/index.bundle';
 
 @Component({
   selector: 'jhi-login',
@@ -38,7 +38,8 @@ export class LoginComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.username.nativeElement.focus();
+    // this.username.nativeElement.focus();
+    initJs();
   }
 
   login(): void {

@@ -1,0 +1,23 @@
+{
+  "buntuApp": {
+    "apropos": {
+      "home": {
+        "title": "Apropos",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Apropos",
+        "createOrEditLabel": "Créer ou éditer un Apropos",
+        "notFound": "Aucun Apropos trouvé"
+      },
+      "created": "Un nouveau Apropos a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Apropos avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Apropos avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Apropos {{ id }} ?"
+      },
+      "detail": {
+        "title": "Apropos"
+      },
+      "id": "ID"
+    }
+  }
+}

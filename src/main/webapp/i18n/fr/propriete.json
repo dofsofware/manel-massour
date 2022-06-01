@@ -1,0 +1,59 @@
+{
+  "buntuApp": {
+    "propriete": {
+      "home": {
+        "title": "Proprietes",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Propriete",
+        "createOrEditLabel": "Créer ou éditer un Propriete",
+        "notFound": "Aucun Propriete trouvé"
+      },
+      "created": "Un nouveau Propriete a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Propriete avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Propriete avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Propriete {{ id }} ?"
+      },
+      "detail": {
+        "title": "Propriete"
+      },
+      "id": "ID",
+      "reference": "Reference",
+      "type": "Type",
+      "modeDeTransaction": "Mode De Transaction",
+      "etat": "Etat",
+      "description": "Description",
+      "prix": "Prix",
+      "adresse": "Adresse",
+      "adresseTronque": "Adresse Tronque",
+      "latitude": "Latitude",
+      "longitude": "Longitude",
+      "superficie": "Superficie",
+      "anneeDeConstruction": "Annee De Construction",
+      "nombreDePieces": "Nombre De Pieces",
+      "nombreDeDouches": "Nombre De Douches",
+      "nombreDeGarages": "Nombre De Garages",
+      "modeDePaiement": "Mode De Paiement",
+      "papier": "Papier",
+      "acceEelectricite": "Acce Eelectricite",
+      "accesEau": "Acces Eau",
+      "accesADSL": "Acces ADSL",
+      "meuble": "Meuble",
+      "enPromo": "En Promo",
+      "periode": "Periode",
+      "distancePrimaire": "Distance Primaire",
+      "distanceSecondaire": "Distance Secondaire",
+      "distanceLycee": "Distance Lycee",
+      "distancehopital": "Distancehopital",
+      "distanceclinique": "Distanceclinique",
+      "urlPhotoPrincipale": "Url Photo Principale",
+      "urlPhoto1": "Url Photo 1",
+      "urlPhoto2": "Url Photo 2",
+      "urlPhoto3": "Url Photo 3",
+      "urlPhoto4": "Url Photo 4",
+      "urlPhoto5": "Url Photo 5",
+      "urlPhoto6": "Url Photo 6",
+      "urlVideo": "Url Video"
+    }
+  }
+}
