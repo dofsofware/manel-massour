@@ -72,8 +72,8 @@ function autoComp(params) {
             .map(element => {
               return `
             <li >
-                <p>
-                ${element.properties.display_name.replace(regex, str => `<b>${str}</b>`)}
+                <p><i class="fa fa-map-marker" aria-hidden="true"></i>
+                ${element.properties.display_name.replace(regex, str => `<b >${str}</b>`)}
                 </p>
             </li> `;
             })
@@ -88,7 +88,7 @@ function autoComp(params) {
 
       const getUrl = window.location;
       const baseUrl = getUrl.protocol + '//' + getUrl.host + '/';
-      const monurl = baseUrl + 'recherche?lng=' + lng + '&lat=' + lat;
+      const monurl = baseUrl + 'recherche?lat=' + lng + '&lng=' + lat;
       $('#result').val(monurl);
       const marker_local_centre = L.icon({
         iconUrl: './images/marker_louer.png',
