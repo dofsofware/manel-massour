@@ -87,10 +87,15 @@
                   </div>
                 </div>
               </div>
+              <div style="display: none">
+                <input type="text" id="lng" /><input type="text" id="lat" />
+                <button id="btnGoTo" (click)="goto()">goto</button>
+              </div>
+
               <div class="row">
-                <div class="col-sm-12 col-lg-6 col-md-6">
-                  <div class="form-group">
-                    <select class="wide select_option" id="categories">
+                <div class="col-sm-12 col-lg-6 col-md-6" id="catBox">
+                  <div class="form-group select-bloc">
+                    <select class="customSelect" id="categories" (change)="change()">
                       <option value="tout">Toutes Catégories</option>
                       <option value="terrain">Terrain</option>
                       <option value="maison">Maison</option>
@@ -101,11 +106,12 @@
                       <option value="verger">Verger</option>
                       <option value="hangar">Hangar</option>
                     </select>
+                    <div class="arrow"><i class="fa fa-angle-down fa-2x" aria-hidden="true"></i></div>
                   </div>
                 </div>
-                <div class="col-sm-12 col-lg-6 col-md-6">
-                  <div class="form-group" id="nbpieces">
-                    <select class="wide select_option">
+                <div class="col-sm-12 col-lg-6 col-md-6" id="nbpiecesBox">
+                  <div class="form-group select-bloc" id="nbpieces">
+                    <select class="customSelect">
                       <option value="tout">Nb de pièces</option>
                       <option value="terrain">1</option>
                       <option value="maison">2</option>
@@ -118,16 +124,21 @@
                       <option value="hangar">9</option>
                       <option value="hangar">10 ou +</option>
                     </select>
+                    <div class="arrow"><i class="fa fa-angle-down fa-2x" aria-hidden="true"></i></div>
                   </div>
                 </div>
                 <div class="col-12 col-lg-6 col-md-6 auto-search-wrapper">
                   <div class="form-group">
-                    <button class="btn btn-block form-control" id="budget">Votre budget</button>
+                    <button id="budget" class="btn btn-outline-primary btn-block text-capitalize advanced-filter">
+                      <i class="fa fa-plus-circle"></i> Votre budget
+                    </button>
                   </div>
                 </div>
                 <div class="col-12 col-lg-6 col-md-6 auto-search-wrapper">
                   <div class="form-group">
-                    <button id="plusDeCriteres" class="btn btn-block form-control">Plus de critères</button>
+                    <button id="plusDeCriteres" class="btn btn-outline-primary btn-block text-capitalize advanced-filter">
+                      <i class="fa fa-plus-circle"></i> Plus de critères
+                    </button>
                   </div>
                 </div>
                 <div id="budget_min" class="col-12 col-lg-6 col-md-6">
@@ -195,16 +206,16 @@
                 <div class="col-12 col-lg-8 col-md-8 PlusDeCriteres_">
                   <div class="form-group">
                     <label class="custom-control custom-radio custom-control-inline">
-                      <input class="custom-control-input" checked="" type="radio" name="gender" value="option1" />
-                      <span class="custom-control-label"> Titre foncier </span>
+                      <input class="custom-control-input" checked="" type="radio" name="gender" value="tout" />
+                      <span class="custom-control-label"> Tout </span>
                     </label>
-                    <label class="custom-control custom-radio custom-control-inline">
-                      <input class="custom-control-input" type="radio" name="gender" value="option2" />
-                      <span class="custom-control-label"> Bail </span>
+                    <label class="custom-control custom-radio custom-control-inline" style="padding-left: 40px">
+                      <input class="custom-control-input" type="radio" name="gender" value="location" />
+                      <span class="custom-control-label"> Location </span>
                     </label>
-                    <label class="custom-control custom-radio custom-control-inline">
-                      <input class="custom-control-input" type="radio" name="gender" value="option2" />
-                      <span class="custom-control-label"> Délibération </span>
+                    <label class="custom-control custom-radio custom-control-inline" style="padding-left: 40px">
+                      <input class="custom-control-input" type="radio" name="gender" value="vente" />
+                      <span class="custom-control-label"> Vente </span>
                     </label>
                   </div>
                   <!-- form-group end.// -->

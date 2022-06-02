@@ -16,6 +16,7 @@ export class RechercheComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     initJs();
+
     // Map initialization
     this.map = L.map('map', { attributionControl: true }).setView([14.656875015645937, -14.833755006747824], 7);
     const OpenStreetMap_Mapnik = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -30,7 +31,7 @@ export class RechercheComponent implements AfterViewInit {
     // googleSat.addTo(this.map);
 
     const urlCoordonnees = new URL(window.location.href);
-    if (urlCoordonnees.searchParams.get('lng')) {
+    if (urlCoordonnees.searchParams.get('lng') && urlCoordonnees.searchParams.get('lat')) {
       // const marker_local_centre = L.icon({
       // 	iconUrl: './images/marker_local_centre.png',
       // 	iconSize: [200, 200],
@@ -41,22 +42,56 @@ export class RechercheComponent implements AfterViewInit {
       // });
 
       // marker.addTo(map).bindPopup("jjjjjj");
-      const api = `https://nominatim.openstreetmap.org/reverse?format=geojson&lat=${urlCoordonnees.searchParams.get(
-        'lat'
-      )!}&lon=${urlCoordonnees.searchParams.get('lng')!}`; // "https://nominatim.openstreetmap.org/reverse?format=geojson&lat="+urlCoordonnees.searchParams.get("lat")+"&lon="+urlCoordonnees.searchParams.get("lng");
-      fetch(api)
-        .then(response => response.json())
-        .then(json => $('#search').val(json.features[0].properties.display_name));
 
-      this.map.flyTo([urlCoordonnees.searchParams.get('lat'), urlCoordonnees.searchParams.get('lng')], 16);
-      if (urlCoordonnees.searchParams.get('categories')) {
-        $('#categories').val(urlCoordonnees.searchParams.get('categories')!);
-        if ($('#categories').val() === 'terrain' || $('#categories').val() === 'hangar' || $('#categories').val() === 'verger') {
-          $('#nbpieces').hide(1);
+      // verifier la longitude et la latitude passées depuis url exist dans categories sinon categories = tout
+      const lat = urlCoordonnees.searchParams.get('lat');
+      const lng = urlCoordonnees.searchParams.get('lng');
+      if ($.isNumeric(lat) && $.isNumeric(lng)) {
+        const api = `https://nominatim.openstreetmap.org/reverse?format=geojson&lat=${lat!}&lon=${lng!}`;
+        fetch(api)
+          .then(response => response.json())
+          .then(json => $('#search').val(json.features[0].properties.display_name));
+
+        this.map.flyTo([urlCoordonnees.searchParams.get('lat'), urlCoordonnees.searchParams.get('lng')], 16);
+      } else {
+        $('#categories').val('tout');
+        const getUrl = window.location;
+        const baseUrl = getUrl.protocol + '//' + getUrl.host + '/';
+        const monurl = baseUrl + 'recherche';
+        window.location.href = monurl;
+      }
+
+      // verifier si la categorie passée depuis url exist dans categories sinon categories = tout
+
+      const cat = urlCoordonnees.searchParams.get('categories');
+      if (cat) {
+        if ($('#categories option[value=' + cat + ']').length > 0) {
+          $('#categories').val(urlCoordonnees.searchParams.get('categories')!);
         } else {
-          $('#nbpieces').show(1);
+          $('#categories').val('tout');
+          const newurlCoordonnees = new URL(window.location.href);
+          newurlCoordonnees.searchParams.set('categories', 'tout');
+          window.history.pushState('object or string', 'Recherches', String(newurlCoordonnees));
+        }
+        // fin verifier si la categorie passée depuis url exist dans categories sinon categories = tout
+
+        if (
+          $('#categories').val() === 'terrain' ||
+          $('#categories').val() === 'chambre' ||
+          $('#categories').val() === 'hangar' ||
+          $('#categories').val() === 'verger'
+        ) {
+          $('#nbpiecesBox').hide(0);
+          $('#catBox').removeClass('col-sm-12 col-lg-6 col-md-6');
+          $('#catBox').addClass('col-12');
+        } else {
+          $('#nbpiecesBox').show(500);
+          $('#catBox').removeClass('col-12');
+          $('#catBox').addClass('col-sm-12 col-lg-6 col-md-6');
         }
       }
+    } else {
+      window.history.pushState('object or string', 'Recherches', 'recherche');
     }
 
     $(function () {
@@ -115,5 +150,48 @@ export class RechercheComponent implements AfterViewInit {
         }
       });
     });
+  }
+
+  goto(): void {
+    const cat = $('#categories').val();
+    const lat = $('#lng').val();
+    const lng = $('#lat').val();
+
+    if ($('#lat').val() !== '' || $('#lng').val() !== '') {
+      this.map.flyTo([$('#lng').val(), $('#lat').val()], 16);
+    }
+    const urlCoordonnees = new URL(window.location.href);
+    urlCoordonnees.searchParams.set('categories', String(cat));
+    urlCoordonnees.searchParams.set('lat', String(lat));
+    urlCoordonnees.searchParams.set('lng', String(lng));
+    window.history.pushState('object or string', 'Recherches', String(urlCoordonnees));
+  }
+  change(): void {
+    if (
+      $('#categories').val() === 'terrain' ||
+      $('#categories').val() === 'chambre' ||
+      $('#categories').val() === 'hangar' ||
+      $('#categories').val() === 'verger'
+    ) {
+      $('#nbpiecesBox').hide(0);
+      $('#catBox').removeClass('col-sm-12 col-lg-6 col-md-6');
+      $('#catBox').addClass('col-12');
+    } else {
+      $('#nbpiecesBox').show(500);
+      $('#catBox').removeClass('col-12');
+      $('#catBox').addClass('col-sm-12 col-lg-6 col-md-6');
+    }
+    const cat = $('#categories').val();
+    // window.history.pushState("object or string", "Recherches", String(cat));
+    const urlCoordonnees = new URL(window.location.href);
+    const lat = urlCoordonnees.searchParams.get('lat');
+    const lng = urlCoordonnees.searchParams.get('lng');
+    if (lat === '' || lng === '' || lat === null || lng === null) {
+      urlCoordonnees.searchParams.append('lat', '14.656875015645937');
+      urlCoordonnees.searchParams.append('lng', '-14.833755006747824');
+      this.map.flyTo([14.656875015645937, -14.833755006747824], 7);
+    }
+    urlCoordonnees.searchParams.set('categories', String(cat));
+    window.history.pushState('object or string', 'Recherches', String(urlCoordonnees));
   }
 }

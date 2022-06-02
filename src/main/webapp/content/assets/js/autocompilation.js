@@ -90,23 +90,26 @@ function autoComp(params) {
       const baseUrl = getUrl.protocol + '//' + getUrl.host + '/';
       const monurl = baseUrl + 'recherche?lat=' + lng + '&lng=' + lat;
       $('#result').val(monurl);
-      const marker_local_centre = L.icon({
-        iconUrl: './images/marker_louer.png',
-        iconSize: [200, 200],
-      });
+      $('#lat').val(lat);
+      $('#lng').val(lng);
+      $('#btnGoTo').click();
+      // const marker_local_centre = L.icon({
+      //   iconUrl: './images/marker_louer.png',
+      //   iconSize: [200, 200],
+      // });
 
-      const marker = L.marker([lng, lat], {
-        title: display_name,
-        icon: marker_local_centre,
-      });
+      // const marker = L.marker([lng, lat], {
+      //   title: display_name,
+      //   icon: marker_local_centre,
+      // });
 
-      marker.on('mouseover', function (e) {
-        this.openPopup();
-      });
-      marker.on('mouseout', function (e) {
-        this.closePopup();
-      });
-      marker.addTo(map).bindPopup('template');
+      // marker.on('mouseover', function (e) {
+      //   this.openPopup();
+      // });
+      // marker.on('mouseout', function (e) {
+      //   this.closePopup();
+      // });
+      // marker.addTo(map).bindPopup('template');
       // map.flyTo([lng, lat], 12);
     },
 
