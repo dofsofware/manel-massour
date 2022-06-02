@@ -4,7 +4,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { AccountService } from 'app/core/auth/account.service';
 import { Account } from 'app/core/auth/account.model';
-import initJs from '../../content/assets/js/index.bundle';
+import { default as initJs } from '../../content/assets/js/index.bundle';
 @Component({
   selector: 'jhi-home',
   templateUrl: './home.component.html',

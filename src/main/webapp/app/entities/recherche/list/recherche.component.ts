@@ -1,7 +1,7 @@
 import { AfterViewInit, Component } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { RechercheService } from '../service/recherche.service';
-import initJs from 'content/assets/js/index.bundle';
+import { default as initJs } from 'content/assets/js/index.bundle';
 import * as L from 'leaflet';
 import $ from 'jquery';
 
@@ -49,6 +49,14 @@ export class RechercheComponent implements AfterViewInit {
         .then(json => $('#search').val(json.features[0].properties.display_name));
 
       this.map.flyTo([urlCoordonnees.searchParams.get('lat'), urlCoordonnees.searchParams.get('lng')], 16);
+      if (urlCoordonnees.searchParams.get('categories')) {
+        $('#categories').val(urlCoordonnees.searchParams.get('categories')!);
+        if ($('#categories').val() === 'terrain' || $('#categories').val() === 'hangar' || $('#categories').val() === 'verger') {
+          $('#nbpieces').hide(1);
+        } else {
+          $('#nbpieces').show(1);
+        }
+      }
     }
 
     $(function () {

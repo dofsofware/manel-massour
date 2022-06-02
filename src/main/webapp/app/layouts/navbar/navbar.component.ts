@@ -10,7 +10,7 @@ import { AccountService } from 'app/core/auth/account.service';
 import { LoginService } from 'app/login/login.service';
 import { ProfileService } from 'app/layouts/profiles/profile.service';
 import { EntityNavbarItems } from 'app/entities/entity-navbar-items';
-import autoComp from 'content/assets/js/autocompilation';
+import { default as autoComp } from 'content/assets/js/autocompilation';
 
 @Component({
   selector: 'jhi-navbar',
