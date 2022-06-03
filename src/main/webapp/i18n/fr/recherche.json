@@ -2,7 +2,7 @@
   "buntuApp": {
     "recherche": {
       "home": {
-        "title": "Recherches",
+        "title": "Buntu",
         "refreshListLabel": "Actualiser la liste",
         "createLabel": "Créer un nouveau Recherche",
         "createOrEditLabel": "Créer ou éditer un Recherche",

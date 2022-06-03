@@ -30,6 +30,28 @@ export class RechercheComponent implements AfterViewInit {
     });
     // googleSat.addTo(this.map);
 
+    const baseLayer = {
+      'Open Street Map': OpenStreetMap_Mapnik,
+      'google Sat': googleSat,
+    };
+    const options_ = {
+      position: 'topleft',
+    };
+
+    new L.Control.Layers(baseLayer).setPosition('topleft').addTo(this.map);
+    this.map.on('zoomend', () => {
+      const zoomLevel = this.map.getZoom();
+      if (zoomLevel === 18) {
+        googleSat.addTo(this.map);
+        this.map.removeLayer(OpenStreetMap_Mapnik);
+        this.map.addLayer(googleSat);
+      } else {
+        OpenStreetMap_Mapnik.addTo(this.map);
+        this.map.removeLayer(googleSat);
+        this.map.addLayer(OpenStreetMap_Mapnik);
+      }
+    });
+
     const urlCoordonnees = new URL(window.location.href);
     if (urlCoordonnees.searchParams.get('lng') && urlCoordonnees.searchParams.get('lat')) {
       // const marker_local_centre = L.icon({
@@ -61,12 +83,11 @@ export class RechercheComponent implements AfterViewInit {
         window.location.href = monurl;
       }
 
-      // verifier si la categorie passée depuis url exist dans categories sinon categories = tout
-
       const cat = urlCoordonnees.searchParams.get('categories');
       if (cat) {
+        // verifier si la categorie passée depuis url exist dans categories sinon categories = tout
         if ($('#categories option[value=' + cat + ']').length > 0) {
-          $('#categories').val(urlCoordonnees.searchParams.get('categories')!);
+          $('#categories').val(cat);
         } else {
           $('#categories').val('tout');
           const newurlCoordonnees = new URL(window.location.href);
@@ -75,6 +96,7 @@ export class RechercheComponent implements AfterViewInit {
         }
         // fin verifier si la categorie passée depuis url exist dans categories sinon categories = tout
 
+        // on verifier si la categorie possede des pieces ou pas et traite
         if (
           $('#categories').val() === 'terrain' ||
           $('#categories').val() === 'chambre' ||
@@ -89,9 +111,24 @@ export class RechercheComponent implements AfterViewInit {
           $('#catBox').removeClass('col-12');
           $('#catBox').addClass('col-sm-12 col-lg-6 col-md-6');
         }
+        // fin on verifier si la categorie possede des pieces ou pas et traite
       }
     } else {
       window.history.pushState('object or string', 'Recherches', 'recherche');
+    }
+
+    const nbP = urlCoordonnees.searchParams.get('nbp');
+    if (nbP) {
+      // verifier si le nbp passée depuis url exist dans nbPieces sinon nbPieces = tout
+      if ($('#nbpieces option[value=' + nbP + ']').length > 0) {
+        $('#nbpieces').val(nbP);
+      } else {
+        $('#nbpieces').val('tout');
+        const newurlCoordonnees = new URL(window.location.href);
+        newurlCoordonnees.searchParams.set('nbp', 'tout');
+        window.history.pushState('object or string', 'Recherches', String(newurlCoordonnees));
+      }
+      // fin verifier si le nbp passée depuis url exist dans nbPieces sinon nbPieces = tout
     }
 
     $(function () {
@@ -150,6 +187,7 @@ export class RechercheComponent implements AfterViewInit {
         }
       });
     });
+    $('.skeleton-content').delay(3000).fadeOut('slow');
   }
 
   goto(): void {
@@ -161,18 +199,30 @@ export class RechercheComponent implements AfterViewInit {
       this.map.flyTo([$('#lng').val(), $('#lat').val()], 16);
     }
     const urlCoordonnees = new URL(window.location.href);
-    urlCoordonnees.searchParams.set('categories', String(cat));
     urlCoordonnees.searchParams.set('lat', String(lat));
     urlCoordonnees.searchParams.set('lng', String(lng));
+    urlCoordonnees.searchParams.set('categories', String(cat));
     window.history.pushState('object or string', 'Recherches', String(urlCoordonnees));
   }
+
+  // quand on choisit une categorie
   change(): void {
+    // on desactive l'option nombre de pièces
+    const urlCoordonnees = new URL(window.location.href);
+    const cat = $('#categories').val();
+    const lat = urlCoordonnees.searchParams.get('lat');
+    const lng = urlCoordonnees.searchParams.get('lng');
+    const nbP = urlCoordonnees.searchParams.get('nbp');
     if (
       $('#categories').val() === 'terrain' ||
       $('#categories').val() === 'chambre' ||
       $('#categories').val() === 'hangar' ||
       $('#categories').val() === 'verger'
     ) {
+      $('#nbpieces').val('tout');
+      if (nbP !== null) {
+        urlCoordonnees.searchParams.delete('nbp');
+      }
       $('#nbpiecesBox').hide(0);
       $('#catBox').removeClass('col-sm-12 col-lg-6 col-md-6');
       $('#catBox').addClass('col-12');
@@ -181,17 +231,30 @@ export class RechercheComponent implements AfterViewInit {
       $('#catBox').removeClass('col-12');
       $('#catBox').addClass('col-sm-12 col-lg-6 col-md-6');
     }
-    const cat = $('#categories').val();
-    // window.history.pushState("object or string", "Recherches", String(cat));
-    const urlCoordonnees = new URL(window.location.href);
-    const lat = urlCoordonnees.searchParams.get('lat');
-    const lng = urlCoordonnees.searchParams.get('lng');
+    // fin on desactive l'option nombre de pièces
+
     if (lat === '' || lng === '' || lat === null || lng === null) {
       urlCoordonnees.searchParams.append('lat', '14.656875015645937');
       urlCoordonnees.searchParams.append('lng', '-14.833755006747824');
       this.map.flyTo([14.656875015645937, -14.833755006747824], 7);
+      urlCoordonnees.searchParams.set('categories', String(cat));
+    } else {
+      urlCoordonnees.searchParams.set('categories', String(cat));
     }
-    urlCoordonnees.searchParams.set('categories', String(cat));
+
     window.history.pushState('object or string', 'Recherches', String(urlCoordonnees));
+  }
+
+  // quand on choisit le nom de pieces
+  changeNbPieces(): void {
+    const urlCoordonnees = new URL(window.location.href);
+    const nbP = urlCoordonnees.searchParams.get('nbp');
+    if (nbP === null) {
+      urlCoordonnees.searchParams.append('nbp', String($('#nbpieces').val()));
+      window.history.pushState('object or string', 'Recherches', String(urlCoordonnees));
+    } else {
+      urlCoordonnees.searchParams.set('nbp', String($('#nbpieces').val()));
+      window.history.pushState('object or string', 'Recherches', String(urlCoordonnees));
+    }
   }
 }

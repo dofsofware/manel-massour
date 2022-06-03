@@ -2,7 +2,7 @@
   "buntuApp": {
     "propriete": {
       "home": {
-        "title": "Proprietes",
+        "title": "Buntu",
         "refreshListLabel": "Actualiser la liste",
         "createLabel": "Créer un nouveau Propriete",
         "createOrEditLabel": "Créer ou éditer un Propriete",

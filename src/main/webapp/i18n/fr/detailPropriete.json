@@ -1,0 +1,23 @@
+{
+  "buntuApp": {
+    "detailPropriete": {
+      "home": {
+        "title": "Buntu",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Detail Propriete",
+        "createOrEditLabel": "Créer ou éditer un Detail Propriete",
+        "notFound": "Aucun Detail Propriete trouvé"
+      },
+      "created": "Un nouveau Detail Propriete a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Detail Propriete avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Detail Propriete avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Detail Propriete {{ id }} ?"
+      },
+      "detail": {
+        "title": "Detail Propriete"
+      },
+      "id": "ID"
+    }
+  }
+}

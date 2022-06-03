@@ -2,7 +2,7 @@
   "buntuApp": {
     "contact": {
       "home": {
-        "title": "Contacts",
+        "title": "Buntu",
         "refreshListLabel": "Actualiser la liste",
         "createLabel": "Créer un nouveau Contact",
         "createOrEditLabel": "Créer ou éditer un Contact",

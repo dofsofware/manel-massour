@@ -2,7 +2,7 @@
   "buntuApp": {
     "apropos": {
       "home": {
-        "title": "Apropos",
+        "title": "Buntu",
         "refreshListLabel": "Actualiser la liste",
         "createLabel": "Créer un nouveau Apropos",
         "createOrEditLabel": "Créer ou éditer un Apropos",

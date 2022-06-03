@@ -37,6 +37,7 @@ enum TypeDeBien {
     VERGER, 
     HANGAR
 }
+entity ProprieteDetail {}
 entity Recherche {}
 entity Contact {}
 entity Apropos {}

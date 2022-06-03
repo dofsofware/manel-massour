@@ -11,6 +11,7 @@
         "contact": "Contact",
         "apropos": "Apropos",
         "propriete": "Propriete",
+        "detailPropriete": "Detail Propriete",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

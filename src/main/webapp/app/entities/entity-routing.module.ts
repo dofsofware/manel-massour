@@ -24,6 +24,11 @@ import { RouterModule } from '@angular/router';
         data: { pageTitle: 'buntuApp.propriete.home.title' },
         loadChildren: () => import('./propriete/propriete.module').then(m => m.ProprieteModule),
       },
+      {
+        path: 'detail-propriete',
+        data: { pageTitle: 'buntuApp.detailPropriete.home.title' },
+        loadChildren: () => import('./detail-propriete/detail-propriete.module').then(m => m.DetailProprieteModule),
+      },
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ]),
   ],
